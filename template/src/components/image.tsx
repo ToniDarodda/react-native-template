@@ -14,7 +14,7 @@ interface IImageProps extends ICommonComponents {
 
 const ImageComponent: React.FC<IImageProps> = ({ source, style }) => {
     return (
-        <View style={[imageStyle.container, style]}>
+        <View style={[style]}>
             <RImage
                 source={source}
                 resizeMode="cover"
@@ -27,15 +27,10 @@ const ImageComponent: React.FC<IImageProps> = ({ source, style }) => {
 export const Image = React.memo(ImageComponent);
 
 const imageStyle = StyleSheet.create({
-    container: {
-        position: 'absolute',
-        top: 0,
-        zIndex: -1,
-    },
     image: {
         width: 400,
         height: 300,
-        resizeMode: 'contain',
+        resizeMode: 'cover',
         borderRadius: 8
     }
 });

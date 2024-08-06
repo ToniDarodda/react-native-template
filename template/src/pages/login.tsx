@@ -1,17 +1,20 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-    Keyboard,
-    KeyboardAvoidingView,
-    Platform,
-    SafeAreaView,
-    StyleSheet,
-    TouchableWithoutFeedback,
-} from 'react-native';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { MainRootStackParamList } from '../navigations/main-root-stack';
-import { Input, VStack, Switch, H1, H2, Text, Button } from '../components/index';
+import {
+    Input,
+    VStack,
+    Switch,
+    H1,
+    Text,
+    Button,
+    Image,
+} from '../components/index';
+import globalStyles from '../styles/global';
+import { text } from '../styles/text';
 
 type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Login'>;
@@ -25,30 +28,26 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
     };
 
     return (
-        <SafeAreaView style={styles.container}>
-            <KeyboardAvoidingView
-                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                style={styles.container}>
-                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                    <VStack style={styles.inner}>
-                        <H1>{t('login_h1_text')}</H1>
-                        <H2>{t('login_h1_text')}</H2>
+        <SafeAreaView style={styles.overlayContainer}>
+            <View style={styles.inner}>
+                <Image
+                    source={require('../assets/bg-5.jpg')}
+                    style={styles.backgroundImage}
+                />
+                <VStack style={[styles.inner, globalStyles.alignItemsStart]}>
+                    <H1 style={text.blue}>{t('login_h1_text')}</H1>
+                    <Text style={text.blue}>{t('login_text_information')}</Text>
 
-                        {/* <Image source={require('../assets/bg-2.jpg')} style={{ width: 400, height: 450, marginTop: 24 }} /> */}
+                    <Input placeHolder={t('login_input_email_placeholder')} />
+                    <Input placeHolder={t('login_input_password_placeholder')} />
 
-                        <Text>{t('login_h1_text')}</Text>
+                    <Switch />
 
-                        <Input placeHolder={t('login_input_email_placeholder')} />
-                        <Input placeHolder={t('login_input_password_placeholder')} />
-
-                        <Switch />
-
-                        <VStack style={{ width: '100%' }}>
-                            <Button text={t('login_button')} onPress={navigateRegister} />
-                        </VStack>
+                    <VStack style={{ width: '100%' }}>
+                        <Button text={t('login_button')} onPress={navigateRegister} />
                     </VStack>
-                </TouchableWithoutFeedback>
-            </KeyboardAvoidingView>
+                </VStack>
+            </View>
         </SafeAreaView>
     );
 };
@@ -57,10 +56,19 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    backgroundImage: {
+        width: 300,
+        height: 300,
+    },
+    overlayContainer: {
+        flex: 1,
+        backgroundColor: 'white',
+    },
     inner: {
         padding: 12,
-        flex: 1,
-        justifyContent: 'flex-start',
-        gap: 20,
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 12,
     },
 });

@@ -1,8 +1,9 @@
 {
     "login_button": "Log in",
-    "login_h1_text": "Welcome to template",
+    "login_h1_text": "Login",
     "login_input_email_placeholder": "Enter your email",
     "login_input_password_placeholder": "Enter your password",
+    "login_text_information": "Enter your login information",
     "WB": "Web Browser",
     "DT": "Device Type",
     "take_test": "Take the test now"

@@ -5,3 +5,4 @@ export const TextColorStyles = StyleSheet.create({
         color: 'gray'
     }
 })
+
