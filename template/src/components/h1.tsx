@@ -20,6 +20,7 @@ const hstackStyle = StyleSheet.create({
     h1: {
         fontSize: 40,
         fontWeight: '500',
-        color: 'black'
+        color: 'black',
+        textAlign: 'center',
     }
 })

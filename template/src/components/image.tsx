@@ -30,6 +30,7 @@ const imageStyle = StyleSheet.create({
     container: {
         position: 'absolute',
         top: 0,
+        zIndex: -1,
     },
     image: {
         width: 400,
