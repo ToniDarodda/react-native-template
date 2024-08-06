@@ -38,11 +38,12 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
 
                         <Text>{t('login_h1_text')}</Text>
 
-                        <Input />
+                        <Input placeHolder={t('login_input_email_placeholder')} />
+                        <Input placeHolder={t('login_input_password_placeholder')} />
 
                         <Switch />
 
-                        <VStack>
+                        <VStack style={{ width: '100%' }}>
                             <Button text={t('login_button')} onPress={navigateRegister} />
                         </VStack>
                     </VStack>

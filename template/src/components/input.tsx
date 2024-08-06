@@ -3,11 +3,13 @@ import React from "react"
 import { StyleSheet, TextInput } from 'react-native';
 import { ICommonComponents } from "../types/common-component";
 
-interface IInputProps extends ICommonComponents { }
+interface IInputProps extends ICommonComponents {
+    placeHolder?: string;
+}
 
-const InputComponent: React.FC<IInputProps> = ({ style }) => {
+const InputComponent: React.FC<IInputProps> = ({ placeHolder, style }) => {
     return (
-        <TextInput style={[inputStyle.input, style]}></TextInput>
+        <TextInput placeholderTextColor={'gray'} placeholder={placeHolder} style={[inputStyle.input, style]} />
     )
 }
 
@@ -21,6 +23,8 @@ const inputStyle = StyleSheet.create({
         borderRadius: 4,
         borderWidth: 1,
         borderColor: '#D3D3D3',
-        minHeight: 48
+        minHeight: 48,
+        minWidth: '100%',
+
     }
 })
