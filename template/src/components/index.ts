@@ -14,4 +14,6 @@ export * from './input';
 
 export * from './text';
 export * from './spacer';
+export * from './separator';
+export * from './separator-with-text';
 

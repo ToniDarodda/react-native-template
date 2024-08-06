@@ -13,6 +13,7 @@ import {
     Button,
     Image,
     Spacer,
+    SeparatorWithText,
 } from '../components/index';
 import globalStyles from '../styles/global';
 import { text } from '../styles/text';
@@ -46,6 +47,8 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
 
                     <Spacer />
                     <Button containerStyle={styles.button} text={t('login_button')} onPress={navigateRegister} />
+                    <SeparatorWithText />
+                    <Button containerStyle={styles.button} text={t('login_button')} onPress={navigateRegister} />
                 </VStack>
             </View>
         </SafeAreaView>
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         width: 300,
-        height: 300,
+        height: 250,
     },
     overlayContainer: {
         flex: 1,
