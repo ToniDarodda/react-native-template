@@ -1,14 +1,13 @@
 import React from "react"
 
 import { StyleSheet, TextInput } from 'react-native';
+import { ICommonComponents } from "../types/common-component";
 
-interface IInputProps {
+interface IInputProps extends ICommonComponents { }
 
-}
-
-const InputComponent: React.FC<IInputProps> = ({ }) => {
+const InputComponent: React.FC<IInputProps> = ({ style }) => {
     return (
-        <TextInput style={inputStyle.input}></TextInput>
+        <TextInput style={[inputStyle.input, style]}></TextInput>
     )
 }
 
