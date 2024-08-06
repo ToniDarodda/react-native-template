@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Switch as RSwitch, StyleSheet } from "react-native"
+
 import { ICommonComponents } from "../types/common-component";
 
 interface ISwitchProps extends ICommonComponents { }
