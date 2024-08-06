@@ -1,13 +1,13 @@
-import './src/utils/i18n';
 import React, { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider, useDispatch } from 'react-redux';
 import Cookies from '@react-native-cookies/cookies';
+import './src/utils/i18n';
 
 import { MainRootStack } from './src/navigations/main-root-stack';
-import { AuthToken, User } from './src/types/user';
+import { AuthToken } from './src/types/user';
 import { setUser } from './src/stores/user-slice';
 import { AppDispatch, store } from './src/stores/store';
 

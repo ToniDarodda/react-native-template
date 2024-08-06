@@ -41,7 +41,7 @@ const buttonStyle = StyleSheet.create({
             width: 0,
             height: 1,
         },
-        shadowOpacity: 0.20,
+        shadowOpacity: 0.10,
         shadowRadius: 1.41,
         elevation: 2,
         minWidth: 200,
