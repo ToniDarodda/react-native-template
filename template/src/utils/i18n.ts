@@ -4,12 +4,14 @@ import * as Localization from 'react-native-localize';
 
 import login from '../traduction/login/login.en.json';
 import register from '../traduction/register/register.en.json';
+import component from '../traduction/component.en.json';
 
 // Define your resources here
 const resources = {
   en: {
     login,
     register,
+    component,
   },
 } as const;
 

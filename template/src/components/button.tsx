@@ -51,8 +51,9 @@ export const Button: React.FC<IButtonProps> = ({
 
 const buttonStyle = StyleSheet.create({
     container: {
+        width: '100%',
         padding: 12,
-        borderRadius: 4,
+        borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
@@ -66,13 +67,14 @@ const buttonStyle = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 1.41,
         elevation: 2,
-        minWidth: 200,
     },
     containerPressed: {
         shadowOpacity: 0,
         elevation: 0,
     },
     textContainer: {
-        fontSize: 16,
+        fontSize: 18,
+        fontWeight: '500',
+        color: 'white'
     },
 });
