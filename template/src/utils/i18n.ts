@@ -1,12 +1,15 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import * as Localization from 'react-native-localize';
-import english from '../traduction/login/login.en.json';
+
+import login from '../traduction/login/login.en.json';
+import register from '../traduction/register/register.en.json';
 
 // Define your resources here
 const resources = {
   en: {
-    translation: english,
+    login,
+    register,
   },
 } as const;
 
