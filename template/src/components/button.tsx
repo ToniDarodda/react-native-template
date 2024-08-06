@@ -53,7 +53,7 @@ const buttonStyle = StyleSheet.create({
     container: {
         width: '100%',
         padding: 12,
-        borderRadius: 4,
+        borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',

@@ -20,7 +20,7 @@ const inputStyle = StyleSheet.create({
         padding: 12,
         backgroundColor: 'white',
         width: 'auto',
-        borderRadius: 4,
+        borderRadius: 8,
         borderWidth: 1,
         borderColor: '#D3D3D3',
         minHeight: 48,
