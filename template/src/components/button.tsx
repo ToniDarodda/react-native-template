@@ -51,6 +51,7 @@ export const Button: React.FC<IButtonProps> = ({
 
 const buttonStyle = StyleSheet.create({
     container: {
+        width: 'auto',
         padding: 12,
         borderRadius: 4,
         justifyContent: 'center',
@@ -66,7 +67,6 @@ const buttonStyle = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 1.41,
         elevation: 2,
-        minWidth: 200,
     },
     containerPressed: {
         shadowOpacity: 0,

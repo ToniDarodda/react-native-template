@@ -1,10 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { SafeAreaView, View } from 'react-native';
+import { SafeAreaView, TextInput, View } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { Button } from '../components/button';
 import { MainRootStackParamList } from '../navigations/main-root-stack';
+import { Input } from '../components/input';
+import { VStack } from '../components/vstack';
+import { HStack } from '../components/hstack';
 
 type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Login'>;
@@ -19,16 +22,23 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
 
     return (
         <SafeAreaView
-            style={{ height: 600, justifyContent: 'center', marginTop: 100 }}>
-            <View
-                style={{
-                    width: '100%',
-                    height: '100%',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}>
-                <Button text={t('login_button')} onPress={navigateRegister} />
-            </View>
+            style={{ height: 600, justifyContent: 'center', alignItems: 'center', marginTop: 100, gap: 12 }}>
+            <VStack style={{ width: 300, gap: 12 }}>
+
+
+                <VStack style={{ width: '100%', gap: 12, backgroundColor: 'red' }}>
+                    <Input />
+                    <Button text={t('login_button')} onPress={navigateRegister} />
+                </VStack>
+
+
+                <HStack style={{ width: '100%', backgroundColor: 'blue' }}>
+                    <Input />
+                    <Button text={t('login_button')} onPress={navigateRegister} />
+                </HStack>
+            </VStack>
+
+
         </SafeAreaView>
     );
 };
