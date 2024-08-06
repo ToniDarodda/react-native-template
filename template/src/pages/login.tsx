@@ -12,6 +12,7 @@ import {
     Text,
     Button,
     Image,
+    Spacer,
 } from '../components/index';
 import globalStyles from '../styles/global';
 import { text } from '../styles/text';
@@ -43,9 +44,8 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
 
                     <Switch />
 
-                    <VStack style={{ width: '100%' }}>
-                        <Button text={t('login_button')} onPress={navigateRegister} />
-                    </VStack>
+                    <Spacer />
+                    <Button text={t('login_button')} onPress={navigateRegister} />
                 </VStack>
             </View>
         </SafeAreaView>
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     inner: {
+        flex: 1,
         padding: 12,
         width: '100%',
         justifyContent: 'center',

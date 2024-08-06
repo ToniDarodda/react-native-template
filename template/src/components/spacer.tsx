@@ -1,5 +1,14 @@
 import React from "react"
+import { StyleSheet, View } from "react-native"
 
-export const SpacerComponent = () => {
-    return <></>
+const SpacerComponent = () => {
+    return <View style={spacerStyle.container} />
 }
+
+export const Spacer = React.memo(SpacerComponent);
+
+const spacerStyle = StyleSheet.create({
+    container: {
+        flex: 1,
+    }
+})
