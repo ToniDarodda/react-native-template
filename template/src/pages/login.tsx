@@ -45,7 +45,7 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
                     <Switch />
 
                     <Spacer />
-                    <Button text={t('login_button')} onPress={navigateRegister} />
+                    <Button containerStyle={styles.button} text={t('login_button')} onPress={navigateRegister} />
                 </VStack>
             </View>
         </SafeAreaView>
@@ -72,4 +72,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         gap: 12,
     },
+    button: {
+        backgroundColor: '#7013bd',
+    }
 });

@@ -73,6 +73,8 @@ const buttonStyle = StyleSheet.create({
         elevation: 0,
     },
     textContainer: {
-        fontSize: 16,
+        fontSize: 18,
+        fontWeight: '500',
+        color: 'white'
     },
 });
