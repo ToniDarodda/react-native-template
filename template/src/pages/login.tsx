@@ -11,13 +11,7 @@ import {
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { MainRootStackParamList } from '../navigations/main-root-stack';
-import { Input } from '../components/input';
-import { VStack } from '../components/vstack';
-import { Switch } from '../components/switch';
-import { H1 } from '../components/h1';
-import { H2 } from '../components/h2';
-import { Text } from '../components/text';
-import { Button } from '../components/button';
+import { Input, VStack, Switch, H1, H2, Text, Button } from '../components/index';
 
 type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Login'>;
@@ -37,7 +31,6 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
                 style={styles.container}>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <VStack style={styles.inner}>
-
                         <H1>{t('login_h1_text')}</H1>
                         <H2>{t('login_h1_text')}</H2>
 
@@ -64,10 +57,9 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     inner: {
-        padding: 24,
+        padding: 12,
         flex: 1,
-        justifyContent: 'space-around',
-        overflow: 'scroll'
+        justifyContent: 'flex-start',
+        gap: 20,
     },
-
 });
