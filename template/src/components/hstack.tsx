@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleProp, StyleSheet, View, ViewStyle } from "react-native"
+import { StyleSheet, View } from "react-native"
+import { ICommonComponents } from "../types/common-component";
 
-interface IHStack {
+interface IHStack extends ICommonComponents {
     children?: React.ReactNode;
-    style?: StyleProp<ViewStyle>;
 }
 
 const HStackComponent: React.FC<IHStack> = ({ children, style }) => {
@@ -15,7 +15,6 @@ const HStackComponent: React.FC<IHStack> = ({ children, style }) => {
 }
 
 export const HStack = React.memo(HStackComponent);
-
 
 const hstackStyle = StyleSheet.create({
     container: {
