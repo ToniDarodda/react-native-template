@@ -1,4 +1,3 @@
-Here's an updated README for your React Native project, including a detailed list of components, features, and setup instructions using Yarn:
 
 ---
 
@@ -185,5 +184,3 @@ Feel free to contribute to this project by submitting issues or pull requests.
 For any questions or support, please contact [Toni Da Rodda](mailto:toni.da.rodda.pro@gmail.com).
 
 ---
-
-This README should serve as a helpful guide for users and contributors to understand the features and setup of your React Native project. Let me know if there's anything else you'd like to add or modify!
