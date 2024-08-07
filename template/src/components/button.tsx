@@ -66,9 +66,9 @@ const buttonStyle = StyleSheet.create({
             width: 0,
             height: 1,
         },
-        shadowOpacity: 0.1,
-        shadowRadius: 1.41,
-        elevation: 2,
+        shadowOpacity: 0.3,
+        shadowRadius: 1.4,
+        elevation: 3,
     },
     containerPressed: {
         shadowOpacity: 0,
