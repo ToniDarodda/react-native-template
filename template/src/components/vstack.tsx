@@ -22,5 +22,6 @@ const vstackStyle = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
+        gap: 8,
     }
 })

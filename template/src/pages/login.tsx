@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { MainRootStackParamList } from '../navigations/main-root-stack';
@@ -31,9 +31,9 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.overlayContainer}>
-            <View style={styles.inner}>
+            <VStack style={styles.inner}>
                 <Image
-                    source={require('../assets/bg-5.jpg')}
+                    source={require('../assets/bg-6.jpg')}
                     style={styles.backgroundImage}
                 />
                 <VStack style={[styles.inner, globalStyles.alignItemsStart]}>
@@ -50,7 +50,7 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
                     <SeparatorWithText />
                     <Button containerStyle={styles.button} text={t('login_button')} onPress={navigateRegister} />
                 </VStack>
-            </View>
+            </VStack>
         </SafeAreaView>
     );
 };
@@ -76,6 +76,6 @@ const styles = StyleSheet.create({
         gap: 12,
     },
     button: {
-        backgroundColor: '#7013bd',
+        backgroundColor: '#0165fe',
     }
 });

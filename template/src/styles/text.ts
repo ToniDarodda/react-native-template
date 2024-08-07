@@ -7,6 +7,9 @@ export const Text = StyleSheet.create({
     blue: {
         color: '#263759',
     },
+    purple: {
+        color: '#0165fe'
+    },
     bold: {
         fontFamily: 'OpenSans-Bold',
     },
@@ -21,5 +24,9 @@ export const Text = StyleSheet.create({
     },
     italic: {
         fontFamily: 'OpenSans-Italic',
+    },
+    small: {
+        fontSize: 13,
+        fontFamily: 'OpenSans-Medium',
     }
 })

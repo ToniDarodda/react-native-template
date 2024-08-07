@@ -22,8 +22,8 @@ const inputStyle = StyleSheet.create({
         backgroundColor: 'white',
         width: 'auto',
         borderRadius: 8,
-        borderWidth: 1,
-        borderColor: '#D3D3D3',
+        borderBottomWidth: 1,
+        borderColor: '#e9eaed',
         minHeight: 48,
         minWidth: '100%',
     }

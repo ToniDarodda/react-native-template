@@ -1,6 +1,12 @@
 {
-    "register_button": "Register",
-    "register_h1_text": "Welcome to template",
+    "register_button": "Continue",
+    "register_h1_text": "Register",
+    "register_input_email_placeholder": "Enter your email",
+    "register_input_password_placeholder": "Enter your password",
+    "register_text_information": "Enter your information",
+    "register_text_already_joined": "Joined us before?",
+    "register_text_sign_in_up_information": "By signing up, you're agree to our Terms & Conditions and Privacy Policy",
+    "register_redirect_login": "Login",
     "WB": "Web Browser",
     "DT": "Device Type",
     "take_test": "Take the test now"
