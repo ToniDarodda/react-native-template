@@ -87,13 +87,13 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
                                     'Terms & Conditions',
                                 )[0]
                             }
-                            <Text style={[TextStyle.purple, TextStyle.small]}>Terms & Conditions</Text>
+                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>Terms & Conditions</Text>
                             {
                                 t('register_text_sign_in_up_information')
                                     .split('Terms & Conditions')[1]
                                     .split('Privacy Policy')[0]
                             }
-                            <Text style={[TextStyle.purple, TextStyle.small]}>Privacy Policy</Text>
+                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>Privacy Policy</Text>
                             {
                                 t('register_text_sign_in_up_information').split(
                                     'Privacy Policy',
@@ -110,7 +110,7 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
                                 {t('register_text_already_joined')}
                             </Text>
                             <Pressable onPress={navigateLogin}>
-                                <Text style={[TextStyle.purple, TextStyle.small]}>
+                                <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
                                     {t('register_redirect_login')}
                                 </Text>
                             </Pressable>
