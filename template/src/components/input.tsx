@@ -2,6 +2,7 @@ import React from "react"
 
 import { StyleSheet, TextInput } from 'react-native';
 import { ICommonComponents } from "../types/common-component";
+import { Text as TextStyle } from '../styles/text';
 
 interface IInputProps extends ICommonComponents {
     placeHolder?: string;
@@ -9,22 +10,23 @@ interface IInputProps extends ICommonComponents {
 
 const InputComponent: React.FC<IInputProps> = ({ placeHolder, style }) => {
     return (
-        <TextInput placeholderTextColor={'gray'} placeholder={placeHolder} style={[inputStyle.input, style]} />
+        <TextInput placeholderTextColor={'gray'} placeholder={placeHolder} style={[composedInputStyle, style]} />
     )
 }
 
 export const Input = React.memo(InputComponent);
 
 const inputStyle = StyleSheet.create({
-    input: {
+    container: {
         padding: 12,
         backgroundColor: 'white',
         width: 'auto',
         borderRadius: 8,
-        borderWidth: 1,
-        borderColor: '#D3D3D3',
+        borderBottomWidth: 1,
+        borderColor: '#e9eaed',
         minHeight: 48,
         minWidth: '100%',
-
     }
 })
+
+const composedInputStyle = StyleSheet.compose(inputStyle.container, TextStyle.regular);

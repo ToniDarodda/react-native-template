@@ -19,8 +19,10 @@ export const VStack = React.memo(VStackComponent);
 
 const vstackStyle = StyleSheet.create({
     container: {
+        width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
+        gap: 8,
     }
 })

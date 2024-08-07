@@ -11,6 +11,7 @@ export * from './image';
 export * from './switch';
 
 export * from './input';
+export * from './input-with-icon';
 
 export * from './text';
 export * from './spacer';
