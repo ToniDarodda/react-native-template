@@ -1,6 +1,9 @@
 {
     "login_button": "Login",
     "login_h1_text": "Login",
+    "login_forgot_password": "Forgot password?",
+    "login_new_to_app": "New to template?",
+    "login_navigate_to_register": "Register",
     "login_input_email_placeholder": "Enter your email",
     "login_input_password_placeholder": "Enter your password",
     "login_text_information": "Enter your login information",
