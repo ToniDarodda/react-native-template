@@ -2,27 +2,20 @@ import Cookies from '@react-native-cookies/cookies';
 
 import {AuthToken, User, UserLogin} from '../types/user';
 import {Fetch} from '../utils/axios';
+import { getCookie, setCookie } from '../utils/cookie-manager';
 
 class UserService {
   async CreateUser(data: User): Promise<void> {
     try {
       const {
         data: {access_token, refresh_token},
-      } = await Fetch.post<AuthToken>('/users', data);
-      await Cookies.set('https://api.betabridge.store', {
-        name: 'quezaco_token',
-        value: access_token,
-        path: '/',
-        expires: new Date(Date.now() + 86400 * 1000 * 365).toISOString(),
-      });
-      await Cookies.set('https://api.betabridge.store', {
-        name: 'quezaco_refresh_token',
-        value: refresh_token,
-        path: '/',
-        expires: new Date(Date.now() + 86400 * 1000 * 365).toISOString(),
-      });
+      } = await Fetch.post<AuthToken>('/account/sign-up', data);
+      
+      await setCookie(access_token, 'template_access_token');
+      await setCookie(refresh_token, 'template_refresh_token');
+
     } catch (err) {
-      throw err;
+      throw err.message;
     }
   }
 
@@ -30,21 +23,12 @@ class UserService {
     try {
       const {
         data: {access_token, refresh_token},
-      } = await Fetch.post<AuthToken>('/users/login', data);
-      await Cookies.set('https://api.betabridge.store', {
-        name: 'quezaco_token',
-        value: access_token,
-        path: '/',
-        expires: new Date(Date.now() + 86400 * 1000 * 365).toISOString(),
-      });
-      await Cookies.set('https://api.betabridge.store', {
-        name: 'quezaco_refresh_token',
-        value: refresh_token,
-        path: '/',
-        expires: new Date(Date.now() + 86400 * 1000 * 365).toISOString(),
-      });
+      } = await Fetch.post<AuthToken>('/account/sign-in', data);
+     
+      await setCookie(access_token, 'template_access_token');
+      await setCookie(refresh_token, 'template_refresh_token');
     } catch (err) {
-      throw err;
+      throw err.message;
     }
   }
 

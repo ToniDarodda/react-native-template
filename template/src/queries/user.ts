@@ -9,8 +9,8 @@ const MutationKeyGetUser = 'GET_USER_KEY';
 export const useUserCreate = () => {
   return useMutation((newUser: User) => userService.CreateUser(newUser), {
     mutationKey: [MutationKeyCreateUser],
-    onSuccess: data => {
-      console.log('User created successfully', data);
+    onSuccess: () => {
+      console.log('User created successfully');
     },
     onError: error => {
       console.error('Error creating user', error);
@@ -21,8 +21,8 @@ export const useUserCreate = () => {
 export const useUserLogin = () => {
   return useMutation((data: UserLogin) => userService.UserLogin(data), {
     mutationKey: [MutationKeyCreateUser],
-    onSuccess: data => {
-      console.log('User created successfully', data);
+    onSuccess: () => {
+      console.log('User logged successfully');
     },
     onError: error => {
       console.error('Error creating user', error);

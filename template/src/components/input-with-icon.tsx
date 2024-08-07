@@ -1,24 +1,41 @@
-import React from "react"
+import React from 'react';
 
-import { StyleSheet, TextInput } from 'react-native';
-import { ICommonComponents } from "../types/common-component";
+import { KeyboardTypeOptions, StyleSheet, TextInput } from 'react-native';
+import { ICommonComponents } from '../types/common-component';
 import { Text as TextStyle } from '../styles/text';
 import Icon from 'react-native-vector-icons/Entypo';
-import { HStack } from "./hstack";
+import { HStack } from './hstack';
 
 interface IInputWithIconProps extends ICommonComponents {
-    placeHolder?: string;
     iconName: string;
+    onChange?: (text: string) => void | undefined;
+    placeHolder?: string | undefined;
+    keyboardType?: KeyboardTypeOptions | undefined;
+    secureTextEntry?: boolean | undefined
 }
 
-const InputWithIconComponent: React.FC<IInputWithIconProps> = ({ placeHolder, iconName, style }) => {
+const InputWithIconComponent: React.FC<IInputWithIconProps> = ({
+    placeHolder,
+    iconName,
+    keyboardType,
+    secureTextEntry,
+    onChange,
+    style,
+}) => {
     return (
         <HStack style={{ paddingLeft: 12, paddingRight: 12 }}>
             <Icon name={iconName} size={20} color="#c8cdd6" />
-            <TextInput placeholderTextColor={'gray'} placeholder={placeHolder} style={[composedInputStyle, style]} />
+            <TextInput
+                placeholderTextColor={'gray'}
+                placeholder={placeHolder}
+                style={[composedInputStyle, style]}
+                onChangeText={onChange}
+                keyboardType={keyboardType}
+                secureTextEntry={secureTextEntry}
+            />
         </HStack>
-    )
-}
+    );
+};
 
 export const InputWithIcon = React.memo(InputWithIconComponent);
 
@@ -36,8 +53,10 @@ const inputStyle = StyleSheet.create({
         position: 'absolute',
         left: 0,
         zIndex: 1,
-    }
-})
+    },
+});
 
-const composedInputStyle = StyleSheet.compose(inputStyle.container, TextStyle.regular);
-
+const composedInputStyle = StyleSheet.compose(
+    inputStyle.container,
+    TextStyle.regular,
+);

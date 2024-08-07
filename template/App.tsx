@@ -10,6 +10,9 @@ import { MainRootStack } from './src/navigations/main-root-stack';
 import { AuthToken } from './src/types/user';
 import { setUser } from './src/stores/user-slice';
 import { AppDispatch, store } from './src/stores/store';
+import { RootSiblingParent } from 'react-native-root-siblings';
+import { getCookie } from './src/utils/cookie-manager';
+
 
 const queryClient = new QueryClient();
 
@@ -17,22 +20,23 @@ const App: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    Cookies.get('user-cookie').then((cookie) => {
-      console.log({ cookie })
-      if (cookie && cookie.value) {
-        dispatch(setUser(cookie as unknown as AuthToken));
+    getCookie().then((cookie) => {
+      if (cookie) {
+        dispatch(setUser(cookie));
       }
     });
   }, [dispatch]);
 
   return (
-    <SafeAreaProvider>
-      <QueryClientProvider client={queryClient}>
-        <NavigationContainer>
-          <MainRootStack />
-        </NavigationContainer>
-      </QueryClientProvider>
-    </SafeAreaProvider>
+    <RootSiblingParent>
+      <SafeAreaProvider>
+        <QueryClientProvider client={queryClient}>
+          <NavigationContainer>
+            <MainRootStack />
+          </NavigationContainer>
+        </QueryClientProvider>
+      </SafeAreaProvider>
+    </RootSiblingParent>
   );
 };
 

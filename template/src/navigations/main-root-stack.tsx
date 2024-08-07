@@ -8,9 +8,11 @@ import { HomeScreen } from '../pages/home';
 export type MainRootStackParamList = {
   Register: undefined;
   Login: undefined;
+
   LostCredentials: undefined;
 
   Congratulations: undefined;
+
   Home: undefined;
   Profile: undefined;
 };
@@ -23,6 +25,7 @@ export const MainRootStack = () => {
       initialRouteName={'Login'}
       screenOptions={{
         headerShown: false,
+        animation: 'default'
       }}>
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
