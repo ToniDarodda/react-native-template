@@ -6,20 +6,23 @@ import {
     TextStyle,
     View,
     TouchableWithoutFeedback,
+    ActivityIndicator,
 } from 'react-native';
 
 import { Text as ITextStyle } from '../styles/text';
 
 interface IButtonProps {
     text: string;
-    containerStyle?: StyleProp<TextStyle>;
-    textStyle?: StyleProp<TextStyle>;
+    isLoading?: boolean | undefined;
+    containerStyle?: StyleProp<TextStyle> | undefined;
+    textStyle?: StyleProp<TextStyle> | undefined;
 
-    onPress?: () => void;
+    onPress?: () => void | undefined;
 }
 
 export const Button: React.FC<IButtonProps> = ({
     text,
+    isLoading,
     containerStyle,
     textStyle,
     onPress,
@@ -45,7 +48,11 @@ export const Button: React.FC<IButtonProps> = ({
                     isPressed && buttonStyle.containerPressed,
                     containerStyle,
                 ]}>
-                <Text style={[composedButtonStyle, textStyle]}>{text}</Text>
+                {isLoading ? (
+                    <ActivityIndicator />
+                ) : (
+                    <Text style={[composedButtonStyle, textStyle]}>{text}</Text>
+                )}
             </View>
         </TouchableWithoutFeedback>
     );
@@ -77,8 +84,11 @@ const buttonStyle = StyleSheet.create({
     textContainer: {
         fontSize: 18,
         textAlign: 'center',
-        color: 'white'
+        color: 'white',
     },
 });
 
-const composedButtonStyle = StyleSheet.compose(buttonStyle.textContainer, ITextStyle.medium);
+const composedButtonStyle = StyleSheet.compose(
+    buttonStyle.textContainer,
+    ITextStyle.medium,
+);
