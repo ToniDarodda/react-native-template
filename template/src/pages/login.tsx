@@ -13,6 +13,7 @@ import {
     Image,
     Spacer,
     HStack,
+    InputWithIcon,
 } from '../components/index';
 import globalStyles from '../styles/global';
 import { Text as TextStyle } from '../styles/text';
@@ -42,8 +43,8 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
                     <H1 style={TextStyle.blue}>{t('login_h1_text')}</H1>
                     <Text style={TextStyle.blue}>{t('login_text_information')}</Text>
 
-                    <Input placeHolder={t('login_input_email_placeholder')} />
-                    <Input placeHolder={t('login_input_password_placeholder')} />
+                    <InputWithIcon placeHolder={t('login_input_email_placeholder')} iconName='email' />
+                    <InputWithIcon placeHolder={t('login_input_password_placeholder')} iconName='lock' />
 
                     <VStack style={globalStyles.alignItemsEnd}>
                         <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>

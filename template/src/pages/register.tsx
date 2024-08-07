@@ -21,6 +21,7 @@ import {
     Switch,
     Spacer,
     HStack,
+    InputWithIcon,
 } from '../components/index';
 import { Text as TextStyle } from '../styles/text';
 import globalStyles from '../styles/global';
@@ -70,12 +71,15 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
 
                     <VStack style={[styles.inner, globalStyles.alignItemsStart]}>
 
-                        <H1 style={TextStyle.blue}>{t('register_h1_text')}</H1>
+                        <VStack style={globalStyles.alignItemsStart}>
+                            <H1 style={TextStyle.blue}>{t('register_h1_text')}</H1>
+                            <Text style={TextStyle.blue}>{t('register_text_information')}</Text>
+                        </VStack>
 
-                        <Text style={TextStyle.blue}>{t('register_text_information')}</Text>
-
-                        <Input placeHolder={t('register_input_email_placeholder')} />
-                        <Input placeHolder={t('register_input_password_placeholder')} />
+                        <VStack style={styles.gaper}>
+                            <InputWithIcon placeHolder={t('register_input_first_name_placeholder')} iconName='slideshare' />
+                            <InputWithIcon placeHolder={t('register_input_last_name_placeholder')} iconName='palette' />
+                        </VStack>
 
                         <Spacer />
 
@@ -148,4 +152,7 @@ const styles = StyleSheet.create({
     contentHidden: {
         opacity: 0.3,
     },
+    gaper: {
+        gap: 20,
+    }
 });

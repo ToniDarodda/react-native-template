@@ -1,6 +1,8 @@
 {
     "register_button": "Continue",
     "register_h1_text": "Register",
+    "register_input_first_name_placeholder": "Enter your first name",
+    "register_input_last_name_placeholder": "Enter your last name",
     "register_input_email_placeholder": "Enter your email",
     "register_input_password_placeholder": "Enter your password",
     "register_text_information": "Enter your information",
