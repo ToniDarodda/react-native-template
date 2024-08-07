@@ -10,11 +10,14 @@ export const setCookie = async (value: string, name: string) => {
       });
 }
 
-export const getCookie = async (): Promise<AuthToken> => {
+export const getCookie = async (): Promise<AuthToken | null> => {
   const cookies = await Cookies.get('http://192.168.1.25');
-  return { access_token : cookies['template_access_token']?.value || '', refresh_token: cookies['template_refresh_token']?.value || '' };
+  
+  if (cookies['template_access_token']?.value === '' ||cookies['template_refresh_token']?.value  === '' ) return null;
+
+  return { access_token : cookies['template_access_token']?.value, refresh_token: cookies['template_refresh_token']?.value };
 };
 
-export const removeCookie = async (name: string) => {
-  await Cookies.clearByName('http://192.168.1.25', name);
+export const removeCookie = async () => {
+  await Cookies.clearAll();
 };

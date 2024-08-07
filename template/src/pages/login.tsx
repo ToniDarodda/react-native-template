@@ -18,15 +18,11 @@ import {
 import globalStyles from '../styles/global';
 import { Text as TextStyle } from '../styles/text';
 import { useUserLogin } from '../queries/user';
+import { Form } from '../types/forms/login';
 
 type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Login'>;
 };
-
-type Form = {
-    email: string,
-    password: string;
-}
 
 export const LoginScreen: React.FC<Props> = ({ navigation }) => {
     const { t } = useTranslation('login');
@@ -53,14 +49,16 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
     };
 
     const handleSubmit = () => {
-        console.log('pressed');
         userLogin(form)
-        console.log(form);
     }
 
     const navigateRegister = () => {
         navigation.navigate('Register');
     };
+
+    useEffect(() => {
+        if (isSuccess) navigation.navigate('Home');
+    }, [isSuccess])
 
     useEffect(() => {
         if (isError) {

@@ -33,7 +33,7 @@ class UserService {
   }
 
   async GetUserInfo(): Promise<User> {
-    const {data: user}: {data: User} = await Fetch.get<User>('/users');
+    const {data: user}: {data: User} = await Fetch.get<User>('/account');
 
     return user;
   }
