@@ -77,8 +77,6 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
                         <Input placeHolder={t('register_input_email_placeholder')} />
                         <Input placeHolder={t('register_input_password_placeholder')} />
 
-                        <Switch />
-
                         <Spacer />
 
                         <Text style={[TextStyle.blue, TextStyle.small]}>
