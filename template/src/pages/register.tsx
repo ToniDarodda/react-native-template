@@ -58,7 +58,10 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
             <VStack style={styles.inner}>
                 <Image
                     source={require('../assets/bg-6.jpg')}
-                    style={[styles.backgroundImage, keyboardVisible && styles.contentHidden]}
+                    style={[
+                        styles.backgroundImage,
+                        keyboardVisible && styles.contentHidden,
+                    ]}
                 />
 
                 <KeyboardAvoidingView
@@ -66,7 +69,9 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
                     style={styles.container}>
 
                     <VStack style={[styles.inner, globalStyles.alignItemsStart]}>
+
                         <H1 style={TextStyle.blue}>{t('register_h1_text')}</H1>
+
                         <Text style={TextStyle.blue}>{t('register_text_information')}</Text>
 
                         <Input placeHolder={t('register_input_email_placeholder')} />
@@ -75,19 +80,43 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
                         <Switch />
 
                         <Spacer />
-                        <Text style={[TextStyle.blue, TextStyle.small]}>{t('register_text_sign_in_up_information')}</Text>
+
+                        <Text style={[TextStyle.blue, TextStyle.small]}>
+                            {
+                                t('register_text_sign_in_up_information').split(
+                                    'Terms & Conditions',
+                                )[0]
+                            }
+                            <Text style={[TextStyle.purple, TextStyle.small]}>Terms & Conditions</Text>
+                            {
+                                t('register_text_sign_in_up_information')
+                                    .split('Terms & Conditions')[1]
+                                    .split('Privacy Policy')[0]
+                            }
+                            <Text style={[TextStyle.purple, TextStyle.small]}>Privacy Policy</Text>
+                            {
+                                t('register_text_sign_in_up_information').split(
+                                    'Privacy Policy',
+                                )[1]
+                            }
+                        </Text>
                         <Button
                             containerStyle={styles.button}
                             text={t('register_button')}
                         />
+
                         <HStack>
-                            <Text style={[TextStyle.blue, TextStyle.small]}>{t('register_text_already_joined')}</Text>
+                            <Text style={[TextStyle.blue, TextStyle.small]}>
+                                {t('register_text_already_joined')}
+                            </Text>
                             <Pressable onPress={navigateLogin}>
-                                <Text style={[TextStyle.purple, TextStyle.small]}>{t('register_redirect_login')}</Text>
+                                <Text style={[TextStyle.purple, TextStyle.small]}>
+                                    {t('register_redirect_login')}
+                                </Text>
                             </Pressable>
                         </HStack>
-                    </VStack>
 
+                    </VStack>
                 </KeyboardAvoidingView>
             </VStack>
         </SafeAreaView>
