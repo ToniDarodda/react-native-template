@@ -16,7 +16,7 @@ import {
     SeparatorWithText,
 } from '../components/index';
 import globalStyles from '../styles/global';
-import { text } from '../styles/text';
+import { Text as TextStyle } from '../styles/text';
 
 type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Login'>;
@@ -37,8 +37,8 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
                     style={styles.backgroundImage}
                 />
                 <VStack style={[styles.inner, globalStyles.alignItemsStart]}>
-                    <H1 style={text.blue}>{t('login_h1_text')}</H1>
-                    <Text style={text.blue}>{t('login_text_information')}</Text>
+                    <H1 style={TextStyle.blue}>{t('login_h1_text')}</H1>
+                    <Text style={TextStyle.blue}>{t('login_text_information')}</Text>
 
                     <Input placeHolder={t('login_input_email_placeholder')} />
                     <Input placeHolder={t('login_input_password_placeholder')} />
