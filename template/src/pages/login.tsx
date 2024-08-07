@@ -5,7 +5,6 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { MainRootStackParamList } from '../navigations/main-root-stack';
 import {
-    Input,
     VStack,
     H1,
     Text,

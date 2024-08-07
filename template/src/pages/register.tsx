@@ -17,8 +17,6 @@ import {
     Text,
     Button,
     Image,
-    Input,
-    Switch,
     Spacer,
     HStack,
     InputWithIcon,
