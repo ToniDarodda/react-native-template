@@ -2,7 +2,7 @@ import axios, {AxiosInstance} from 'axios';
 import Cookies from '@react-native-cookies/cookies';
 
 export const Fetch: AxiosInstance = axios.create({
-  baseURL: 'http://127.0.0.1',
+  baseURL: 'http://192.168.1.25:3000',
   timeout: 5000,
   timeoutErrorMessage:
     'Request timeout there is maybe a problem with the server!',

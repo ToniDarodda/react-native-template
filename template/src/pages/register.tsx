@@ -23,6 +23,7 @@ import {
 } from '../components/index';
 import { Text as TextStyle } from '../styles/text';
 import globalStyles from '../styles/global';
+
 type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Register'>;
 };
