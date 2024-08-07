@@ -1,45 +1,64 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider, useDispatch } from 'react-redux';
-import Cookies from '@react-native-cookies/cookies';
+import { View, ActivityIndicator } from 'react-native';
 import './src/utils/i18n';
 
 import { MainRootStack } from './src/navigations/main-root-stack';
-import { AuthToken } from './src/types/user';
-import { setUser } from './src/stores/user-slice';
+import { setTokens } from './src/stores/slices/user-slice';
 import { AppDispatch, store } from './src/stores/store';
+import { RootSiblingParent } from 'react-native-root-siblings';
+import { getCookie } from './src/utils/cookie-manager';
+
 
 const queryClient = new QueryClient();
 
 const App: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
+  const [loading, setLoading] = useState(true);
+
+
   useEffect(() => {
-    Cookies.get('user-cookie').then((cookie) => {
-      console.log({ cookie })
-      if (cookie && cookie.value) {
-        dispatch(setUser(cookie as unknown as AuthToken));
-      }
-    });
+    const checkAuthentication = async () => {
+      const cookie = await getCookie();
+
+      dispatch(setTokens(cookie));
+      setLoading(false);
+    };
+
+    checkAuthentication();
   }, [dispatch]);
 
+  if (loading) {
+
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  }
+
+
   return (
-    <SafeAreaProvider>
-      <QueryClientProvider client={queryClient}>
-        <NavigationContainer>
+    <RootSiblingParent>
+      <SafeAreaProvider>
+        <QueryClientProvider client={queryClient}>
           <MainRootStack />
-        </NavigationContainer>
-      </QueryClientProvider>
-    </SafeAreaProvider>
+        </QueryClientProvider>
+      </SafeAreaProvider>
+    </RootSiblingParent >
   );
 };
 
 const AppWrapper: React.FC = () => {
   return (
     <Provider store={store}>
-      <App />
+      <NavigationContainer>
+        <App />
+      </NavigationContainer>
     </Provider>
   );
 };

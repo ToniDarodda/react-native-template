@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 
-const SERVER_URL = 'http://127.0.0.1';
+const SERVER_URL = 'http://192.168.1.25:3000';
 
 const socket = io(SERVER_URL, {
   transports: ['websocket'],

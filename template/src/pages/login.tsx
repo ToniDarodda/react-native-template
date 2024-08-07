@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, SafeAreaView, StyleSheet } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import Toast from 'react-native-root-toast';
 
 import { MainRootStackParamList } from '../navigations/main-root-stack';
 import {
@@ -16,6 +17,8 @@ import {
 } from '../components/index';
 import globalStyles from '../styles/global';
 import { Text as TextStyle } from '../styles/text';
+import { useUserLogin } from '../queries/user';
+import { Form } from '../types/forms/login';
 
 type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Login'>;
@@ -24,9 +27,57 @@ type Props = {
 export const LoginScreen: React.FC<Props> = ({ navigation }) => {
     const { t } = useTranslation('login');
 
+    const { mutate: userLogin, isLoading, isSuccess, isError } = useUserLogin();
+
+    const [form, setForm] = useState<Form>({
+        email: '',
+        password: '',
+    })
+
+    const handleMailChange = (value: string) => {
+        setForm({
+            ...form,
+            email: value,
+        });
+    };
+
+    const handlePasswordChange = (value: string) => {
+        setForm({
+            ...form,
+            password: value,
+        });
+    };
+
+    const handleSubmit = () => {
+        userLogin(form)
+    }
+
     const navigateRegister = () => {
         navigation.navigate('Register');
     };
+
+    useEffect(() => {
+        if (isSuccess) navigation.navigate('Home');
+    }, [isSuccess])
+
+    useEffect(() => {
+        if (isError) {
+            Toast.show(`Your request failed, credentials don't match.`, {
+                duration: Toast.durations.LONG,
+                position: Toast.positions.BOTTOM,
+                animation: true,
+                hideOnPress: true,
+                opacity: 1,
+                delay: 0,
+                backgroundColor: '#FF9494',
+                textColor: 'white',
+                containerStyle: {
+                    width: '100%',
+                    height: 40
+                }
+            });
+        }
+    }, [isError])
 
     return (
         <SafeAreaView style={styles.overlayContainer}>
@@ -42,8 +93,8 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
                     <H1 style={TextStyle.blue}>{t('login_h1_text')}</H1>
                     <Text style={TextStyle.blue}>{t('login_text_information')}</Text>
 
-                    <InputWithIcon placeHolder={t('login_input_email_placeholder')} iconName='email' />
-                    <InputWithIcon placeHolder={t('login_input_password_placeholder')} iconName='lock' />
+                    <InputWithIcon placeHolder={t('login_input_email_placeholder')} iconName='email' onChange={handleMailChange} keyboardType='email-address' />
+                    <InputWithIcon placeHolder={t('login_input_password_placeholder')} iconName='lock' onChange={handlePasswordChange} secureTextEntry />
 
                     <VStack style={globalStyles.alignItemsEnd}>
                         <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
@@ -53,12 +104,14 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
 
                     <Spacer />
 
-                    <Button containerStyle={styles.button} text={t('login_button')} />
+                    <Button containerStyle={styles.button} text={t('login_button')} onPress={handleSubmit} />
 
                     <HStack>
+
                         <Text style={[TextStyle.blue, TextStyle.small]}>
                             {t('login_new_to_app')}
                         </Text>
+
                         <Pressable onPress={navigateRegister}>
                             <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
                                 {t('login_navigate_to_register')}
