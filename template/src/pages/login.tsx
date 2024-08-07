@@ -18,7 +18,7 @@ import {
 import globalStyles from '../styles/global';
 import { Text as TextStyle } from '../styles/text';
 import { useUserLogin } from '../queries/user';
-import { Form } from '../types/forms/login';
+import { FormLogin } from '../types/forms/login';
 
 type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Login'>;
@@ -29,7 +29,7 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
 
     const { mutate: userLogin, isLoading, isSuccess, isError } = useUserLogin();
 
-    const [form, setForm] = useState<Form>({
+    const [form, setForm] = useState<FormLogin>({
         email: '',
         password: '',
     })
@@ -104,7 +104,7 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
 
                     <Spacer />
 
-                    <Button containerStyle={styles.button} text={t('login_button')} onPress={handleSubmit} />
+                    <Button containerStyle={styles.button} text={t('login_button')} onPress={handleSubmit} isLoading={isLoading} />
 
                     <HStack>
 
