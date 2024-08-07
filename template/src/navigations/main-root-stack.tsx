@@ -27,7 +27,7 @@ export const MainRootStack = () => {
       initialRouteName={isAuth ? 'Home' : 'Login'}
       screenOptions={{
         headerShown: false,
-        animation: 'default',
+        animation: 'none',
       }}
     >
       <Stack.Screen name="Home" component={HomeScreen} />

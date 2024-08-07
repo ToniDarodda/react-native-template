@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { Provider, useDispatch } from 'react-redux';
-import Cookies from '@react-native-cookies/cookies';
+import { View, ActivityIndicator } from 'react-native';
 import './src/utils/i18n';
 
 import { MainRootStack } from './src/navigations/main-root-stack';
-import { AuthToken } from './src/types/user';
-import { setTokens, setUser } from './src/stores/slices/user-slice';
+import { setTokens } from './src/stores/slices/user-slice';
 import { AppDispatch, store } from './src/stores/store';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import { getCookie } from './src/utils/cookie-manager';
-import { View, ActivityIndicator } from 'react-native';
 
 
 const queryClient = new QueryClient();
