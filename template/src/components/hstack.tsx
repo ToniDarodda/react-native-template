@@ -18,8 +18,10 @@ export const HStack = React.memo(HStackComponent);
 
 const hstackStyle = StyleSheet.create({
     container: {
+        width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
+        gap: 8,
     }
 })

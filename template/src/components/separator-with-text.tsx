@@ -6,16 +6,19 @@ import { ICommonComponents } from '../types/common-component';
 import { HStack } from './hstack';
 import { VStack } from './vstack';
 import { Text } from './text';
+import { Text as TextStyle } from '../styles/text';
 
-interface ISeparatorWithTextProps extends ICommonComponents { }
+interface ISeparatorWithTextProps extends ICommonComponents {
+    text?: string;
+}
 
-const SeparatorWithTextComponent: React.FC<ISeparatorWithTextProps> = ({ style }) => {
+const SeparatorWithTextComponent: React.FC<ISeparatorWithTextProps> = ({ text, style }) => {
     const { t } = useTranslation('component');
 
     return (
-        <HStack style={separatorStyle.container}>
+        <HStack style={[separatorStyle.container, style]}>
             <VStack style={separatorStyle.borderContainer} />
-            <Text style={separatorStyle.textColor}>{t('separator_with_text')}</Text>
+            <Text style={composedSeparatorWithTestStyle}>{text ?? t('separator_with_text')}</Text>
             <VStack style={separatorStyle.borderContainer} />
         </HStack>
     )
@@ -39,3 +42,5 @@ const separatorStyle = StyleSheet.create({
         color: '#909aab'
     }
 })
+
+const composedSeparatorWithTestStyle = StyleSheet.compose(separatorStyle.textColor, TextStyle.regular);
