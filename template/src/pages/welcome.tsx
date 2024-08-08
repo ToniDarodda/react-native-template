@@ -27,6 +27,7 @@ export const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
     const handleNavigationRegister = () => {
         navigation.navigate('Register');
     };
+
     const handleNavigationLogin = () => {
         navigation.navigate('Login');
     };

@@ -1,4 +1,3 @@
-Here's an updated README for your React Native project, including a detailed list of components, features, and setup instructions using Yarn:
 
 ---
 
@@ -12,6 +11,22 @@ Here's an updated README for your React Native project, including a detailed lis
 ![License](https://img.shields.io/badge/License-UNLICENSED-green?style=for-the-badge)
 
 This project is a React Native template designed to accelerate development by providing essential features such as state management, internationalization, data fetching, navigation, and reusable components.
+
+## Screenshots
+
+Created using the default components provided in the project.
+
+### Welcome Screen
+
+![Welcome Screen](./read-me-assets/welcome.png)
+
+### Login Screen
+
+![Login Screen](./read-me-assets/login.png)
+
+### Register Screen
+
+![Register Screen](./read-me-assets/register.png)
 
 ## Features
 
@@ -151,7 +166,6 @@ yarn test
 
 ## 🛠️ Scripts
 
-- **🔨 Build the application:** `yarn build`
 - **🧹 Format code using Prettier:** `yarn format`
 - **🏃‍♂️ Start the application:** `yarn start`
 - **👨‍💻 Start in development mode:** `yarn android` or `yarn ios`
@@ -161,7 +175,7 @@ yarn test
 
 ## 📜 License
 
-This project is licensed under the UNLICENSED License.
+There is no license; you're free to use it.
 
 ## 👤 Author
 
@@ -186,4 +200,14 @@ For any questions or support, please contact [Toni Da Rodda](mailto:toni.da.rodd
 
 ---
 
-This README should serve as a helpful guide for users and contributors to understand the features and setup of your React Native project. Let me know if there's anything else you'd like to add or modify!
+### How to Add Images
+
+1. **Store Images:** Ensure your images are stored in a directory within your project (e.g., `assets/images`).
+
+2. **Reference Images:** Use relative paths or URLs to reference the images in your markdown. Make sure the path points correctly to the image location.
+
+3. **Ensure Access:** If hosted externally, ensure the images are accessible publicly.
+
+### Conclusion
+
+By following these steps, you can effectively document and showcase your app's key screens, enhancing the project's clarity and appeal.
