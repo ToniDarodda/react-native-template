@@ -150,7 +150,6 @@ yarn test
 
 ## 🛠️ Scripts
 
-- **🔨 Build the application:** `yarn build`
 - **🧹 Format code using Prettier:** `yarn format`
 - **🏃‍♂️ Start the application:** `yarn start`
 - **👨‍💻 Start in development mode:** `yarn android` or `yarn ios`
