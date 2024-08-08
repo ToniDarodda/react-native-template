@@ -1,9 +1,9 @@
-import {AuthToken, User, UserLogin} from '../types/user';
+import {AuthToken, User, UserLogin, UserRegister} from '../types/user';
 import {Fetch} from '../utils/axios';
 import {setCookie} from '../utils/cookie-manager';
 
 class UserService {
-  async CreateUser(data: User): Promise<void> {
+  async CreateUser(data: UserRegister): Promise<void> {
     try {
       const {
         data: {access_token, refresh_token},

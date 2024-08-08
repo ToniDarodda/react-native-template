@@ -1,13 +1,13 @@
 import {useMutation, useQuery} from 'react-query';
 
 import {userService} from '../services/user';
-import {User, UserLogin} from '../types/user';
+import {User, UserLogin, UserRegister} from '../types/user';
 
 const MutationKeyCreateUser = 'CREATE_USER_KEY';
 const MutationKeyGetUser = 'GET_USER_KEY';
 
 export const useUserCreate = () => {
-  return useMutation((newUser: User) => userService.CreateUser(newUser), {
+  return useMutation((newUser: UserRegister) => userService.CreateUser(newUser), {
     mutationKey: [MutationKeyCreateUser],
     onSuccess: () => {
       console.log('User created successfully');

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import {
@@ -8,6 +8,8 @@ import {
     StyleSheet,
 } from 'react-native';
 import { useForm, Controller } from "react-hook-form"
+import Toast from 'react-native-root-toast';
+import { RouteProp } from '@react-navigation/native';
 
 import { MainRootStackParamList } from '../navigations/main-root-stack';
 import {
@@ -20,13 +22,22 @@ import {
 } from '../components/index';
 import { Text as TextStyle } from '../styles/text';
 import { RegisterP } from '../types/forms/register';
+import { useUserCreate } from '../queries/user';
+import { Country } from '../enums/country';
 
 type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'RegisterPIS'>;
+    route: RouteProp<MainRootStackParamList, 'RegisterPIS'>;
+
 };
 
-export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
+export const RegisterPISScreen: React.FC<Props> = ({ navigation, route }) => {
     const { t } = useTranslation('register');
+
+    const { firstName, lastName } = route.params;
+
+
+    const { mutate: createUser, isLoading, isError, isSuccess } = useUserCreate();
 
     const {
         control,
@@ -41,9 +52,39 @@ export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
         },
     });
 
-    const onSubmit = (data: RegisterP) => console.log(data);
+    const onSubmit = (data: RegisterP) => {
+        createUser({
+            ...data, firstName, lastName, country: Country.FRANCE, phoneNumber: '',
+        });
+    }
+
 
     const password = watch('password');
+
+    useEffect(() => {
+        if (isSuccess) {
+            navigation.navigate('Home');
+        }
+    }, [isSuccess])
+
+    useEffect(() => {
+        if (isError) {
+            Toast.show(`Your request failed, credentials don't match.`, {
+                duration: Toast.durations.LONG,
+                position: Toast.positions.BOTTOM,
+                animation: true,
+                hideOnPress: true,
+                opacity: 1,
+                delay: 0,
+                backgroundColor: '#FF9494',
+                textColor: 'white',
+                containerStyle: {
+                    width: '100%',
+                    height: 40
+                }
+            });
+        }
+    }, [isError])
 
     return (
         <SafeAreaView style={styles.overlayContainer}>
@@ -164,6 +205,7 @@ export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
                             containerStyle={styles.button}
                             text={t('register_button')}
                             onPress={handleSubmit(onSubmit)}
+                            isLoading={isLoading}
                         />
                     </VStack>
                 </KeyboardAvoidingView>
