@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import {
-    Keyboard,
     KeyboardAvoidingView,
     Platform,
     SafeAreaView,
@@ -44,24 +43,6 @@ export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
     });
 
     const onSubmit = (data: RegisterP) => console.log(data);
-
-    const [keyboardVisible, setKeyboardVisible] = useState<boolean>(false);
-
-    useEffect(() => {
-        const keyboardDidShowListener = Keyboard.addListener(
-            'keyboardDidShow',
-            () => setKeyboardVisible(true),
-        );
-        const keyboardDidHideListener = Keyboard.addListener(
-            'keyboardDidHide',
-            () => setKeyboardVisible(false),
-        );
-
-        return () => {
-            keyboardDidHideListener.remove();
-            keyboardDidShowListener.remove();
-        };
-    }, []);
 
     const password = watch('password');
 
@@ -105,7 +86,7 @@ export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
                                 )}
                                 name="email"
                             />
-                            {errors.email && <Text style={[TextStyle.small, { textAlign: 'left', width: '100%', paddingHorizontal: 30 }]}>{errors.email.message}</Text>}
+                            {errors.email && <Text style={[TextStyle.small, styles.textError]}>{errors.email.message}</Text>}
 
                             <Controller
                                 control={control}
@@ -131,7 +112,7 @@ export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
                                 )}
                                 name="password"
                             />
-                            {errors.password && <Text style={[TextStyle.small, { textAlign: 'left', width: '100%', paddingHorizontal: 30 }]}>{errors.password.message}</Text>}
+                            {errors.password && <Text style={[TextStyle.small, styles.textError]}>{errors.password.message}</Text>}
 
                             <Controller
                                 control={control}
@@ -155,7 +136,7 @@ export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
                                 )}
                                 name="validatePassword"
                             />
-                            {errors.validatePassword && <Text style={[TextStyle.small, { textAlign: 'left', width: '100%', paddingHorizontal: 30 }]}>{errors.validatePassword.message}</Text>}
+                            {errors.validatePassword && <Text style={[TextStyle.small, styles.textError]}>{errors.validatePassword.message}</Text>}
                         </VStack>
 
                         <Spacer />
@@ -179,6 +160,7 @@ export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
                                 )[1]
                             }
                         </Text>
+
                         <Button
                             containerStyle={styles.button}
                             text={t('register_button')}
@@ -216,5 +198,10 @@ const styles = StyleSheet.create({
     },
     gaper: {
         gap: 20,
+    },
+    textError: {
+        textAlign: 'left',
+        width: '100%',
+        paddingHorizontal: 30
     }
 });
