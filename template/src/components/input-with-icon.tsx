@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { KeyboardTypeOptions, StyleSheet, TextInput } from 'react-native';
+import { KeyboardTypeOptions, StyleSheet, TextInput, TextInputProps } from 'react-native';
 import { ICommonComponents } from '../types/common-component';
 import { Text as TextStyle } from '../styles/text';
 import Icon from 'react-native-vector-icons/Entypo';
@@ -9,16 +9,14 @@ import { HStack } from './hstack';
 interface IInputWithIconProps extends ICommonComponents {
     iconName: string;
     onChange?: (text: string) => void | undefined;
-    placeHolder?: string | undefined;
-    keyboardType?: KeyboardTypeOptions | undefined;
-    secureTextEntry?: boolean | undefined
+    error?: boolean | undefined;
+    textInputProps?: TextInputProps | undefined;
 }
 
 const InputWithIconComponent: React.FC<IInputWithIconProps> = ({
-    placeHolder,
     iconName,
-    keyboardType,
-    secureTextEntry,
+    textInputProps,
+    error,
     onChange,
     style,
 }) => {
@@ -27,11 +25,9 @@ const InputWithIconComponent: React.FC<IInputWithIconProps> = ({
             <Icon name={iconName} size={20} color="#c8cdd6" />
             <TextInput
                 placeholderTextColor={'gray'}
-                placeholder={placeHolder}
-                style={[composedInputStyle, style]}
+                style={[composedInputStyle, error && inputStyle.error, style]}
                 onChangeText={onChange}
-                keyboardType={keyboardType}
-                secureTextEntry={secureTextEntry}
+                {...textInputProps}
             />
         </HStack>
     );
@@ -54,6 +50,10 @@ const inputStyle = StyleSheet.create({
         left: 0,
         zIndex: 1,
     },
+    error: {
+        borderBottomWidth: 1,
+        borderColor: 'red',
+    }
 });
 
 const composedInputStyle = StyleSheet.compose(

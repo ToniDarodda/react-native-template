@@ -20,7 +20,8 @@ export const Text = React.memo(TextComponent);
 const hstackStyle = StyleSheet.create({
     text: {
         fontSize: 16,
-        color: 'black'
+        color: 'black',
+        textAlign: 'center'
     }
 })
 
