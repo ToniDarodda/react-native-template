@@ -63,7 +63,6 @@ export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
         };
     }, []);
 
-    // Watch password to use in validation
     const password = watch('password');
 
     return (
@@ -71,12 +70,13 @@ export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
             <VStack style={styles.inner}>
                 <KeyboardAvoidingView
                     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                    style={styles.container}>
+                    style={styles.container}
+                >
 
                     <VStack style={[styles.inner, globalStyles.alignItemsStart]}>
 
-                        <VStack style={globalStyles.alignItemsStart}>
-                            <H1 style={[TextStyle.blue, { fontSize: 28 }]}>{t('register_pis_h1_information')}</H1>
+                        <VStack style={[globalStyles.alignItemsStart, { gap: 0 }]}>
+                            <H1 style={[TextStyle.lightBlue, { fontSize: 28 }]}>{t('register_pis_h1_information')}</H1>
                             <Text style={TextStyle.darkGray}>{t('register_pis_text_information')}</Text>
                         </VStack>
 
@@ -105,7 +105,7 @@ export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
                                 )}
                                 name="email"
                             />
-                            {errors.email && <Text>{errors.email.message}</Text>}
+                            {errors.email && <Text style={[TextStyle.small, { textAlign: 'left', width: '100%', paddingHorizontal: 30 }]}>{errors.email.message}</Text>}
 
                             <Controller
                                 control={control}
@@ -131,7 +131,7 @@ export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
                                 )}
                                 name="password"
                             />
-                            {errors.password && <Text>{errors.password.message}</Text>}
+                            {errors.password && <Text style={[TextStyle.small, { textAlign: 'left', width: '100%', paddingHorizontal: 30 }]}>{errors.password.message}</Text>}
 
                             <Controller
                                 control={control}
@@ -155,7 +155,7 @@ export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
                                 )}
                                 name="validatePassword"
                             />
-                            {errors.validatePassword && <Text>{errors.validatePassword.message}</Text>}
+                            {errors.validatePassword && <Text style={[TextStyle.small, { textAlign: 'left', width: '100%', paddingHorizontal: 30 }]}>{errors.validatePassword.message}</Text>}
                         </VStack>
 
                         <Spacer />
