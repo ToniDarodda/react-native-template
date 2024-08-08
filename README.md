@@ -12,6 +12,22 @@
 
 This project is a React Native template designed to accelerate development by providing essential features such as state management, internationalization, data fetching, navigation, and reusable components.
 
+## Screenshots
+
+Created using the default components provided in the project.
+
+### Welcome Screen
+
+![Welcome Screen](./read-me-assets/welcome.png)
+
+### Login Screen
+
+![Login Screen](./read-me-assets/login.png)
+
+### Register Screen
+
+![Register Screen](./read-me-assets/register.png)
+
 ## Features
 
 - **🌍 Internationalization (i18n)**
@@ -159,7 +175,7 @@ yarn test
 
 ## 📜 License
 
-There is no license you'r free to use it.
+There is no license; you're free to use it.
 
 ## 👤 Author
 
