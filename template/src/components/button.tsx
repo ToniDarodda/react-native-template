@@ -17,7 +17,7 @@ interface IButtonProps {
     containerStyle?: StyleProp<TextStyle> | undefined;
     textStyle?: StyleProp<TextStyle> | undefined;
 
-    onPress?: () => void | undefined;
+    onPress?: () => void | undefined | Promise<void>;
 }
 
 export const Button: React.FC<IButtonProps> = ({
