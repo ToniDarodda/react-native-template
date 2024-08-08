@@ -32,7 +32,7 @@ export const MainRootStack = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName={isAuth ? 'Welcome' : 'Welcome'}
+      initialRouteName={isAuth ? 'Home' : 'Welcome'}
       screenOptions={{
         headerShown: false,
         animation: 'none',
