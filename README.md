@@ -111,7 +111,7 @@ Ensure you have the following installed:
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/YourUsername/ReactNativeTemplate.git
+   git clone git@github.com:ToniDarodda/react-native-template.git
    cd ReactNativeTemplate
    ```
 
