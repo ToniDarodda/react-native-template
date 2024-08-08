@@ -106,7 +106,6 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
                         )}
                         name="email"
                     />
-                    {errors.email && <Text style={[TextStyle.small, styles.textError]}>{errors.email.message}</Text>}
 
 
                     <Controller
@@ -133,7 +132,6 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
                         )}
                         name="password"
                     />
-                    {errors.password && <Text style={[TextStyle.small, styles.textError]}>{errors.password.message}</Text>}
 
 
                     <VStack style={globalStyles.alignItemsEnd}>
