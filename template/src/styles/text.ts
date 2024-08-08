@@ -7,6 +7,15 @@ export const Text = StyleSheet.create({
     blue: {
         color: '#263759',
     },
+    lightBlue: {
+        color: '#0165fe'
+    },
+    gray: {
+        color: '#e9eaed'
+    },
+    darkGray: {
+        color: 'gray'
+    },
     purple: {
         color: '#0165fe'
     },

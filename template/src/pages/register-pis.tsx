@@ -4,11 +4,10 @@ import { useTranslation } from 'react-i18next';
 import {
     KeyboardAvoidingView,
     Platform,
-    Pressable,
     SafeAreaView,
     StyleSheet,
 } from 'react-native';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller } from "react-hook-form"
 
 import { MainRootStackParamList } from '../navigations/main-root-stack';
 import {
@@ -17,104 +16,126 @@ import {
     Text,
     Button,
     Spacer,
-    HStack,
     InputWithIcon,
 } from '../components/index';
 import { Text as TextStyle } from '../styles/text';
-import { RegisterFL } from '../types/forms/register';
+import { RegisterP } from '../types/forms/register';
 
 type Props = {
-    navigation: NativeStackNavigationProp<MainRootStackParamList, 'Register'>;
+    navigation: NativeStackNavigationProp<MainRootStackParamList, 'RegisterPIS'>;
 };
 
-export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
+export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
     const { t } = useTranslation('register');
 
     const {
         control,
         handleSubmit,
         formState: { errors },
-    } = useForm<RegisterFL>({
+        watch,
+    } = useForm<RegisterP>({
         defaultValues: {
-            firstName: '',
-            lastName: '',
+            email: "",
+            password: "",
+            validatePassword: "",
         },
     });
 
-    const onSubmit = (data: RegisterFL) => {
-        navigation.navigate('RegisterPIS', { ...data });
-    };
+    const onSubmit = (data: RegisterP) => console.log(data);
 
-    const navigateLogin = () => {
-        navigation.navigate('Login');
-    };
-
-    console.log(errors);
+    const password = watch('password');
 
     return (
         <SafeAreaView style={styles.overlayContainer}>
             <VStack style={styles.inner}>
                 <KeyboardAvoidingView
                     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                    style={styles.container}>
+                    style={styles.container}
+                >
+
                     <VStack style={[styles.inner]}>
+
                         <VStack style={{ paddingBottom: 40 }}>
-                            <H1 style={TextStyle.blue}>{t('register_h1_text')}</H1>
-                            <Text style={TextStyle.blue}>
-                                {t('register_text_information')}
-                            </Text>
+                            <H1 style={[TextStyle.blue, { fontSize: 28 }]}>{t('register_pis_h1_information')}</H1>
+                            <Text style={TextStyle.darkGray}>{t('register_pis_text_information')}</Text>
                         </VStack>
 
                         <VStack style={styles.gaper}>
                             <Controller
                                 control={control}
                                 rules={{
-                                    required: 'First name is required',
+                                    required: 'Email is required',
+                                    pattern: {
+                                        value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                                        message: 'Invalid email address',
+                                    },
                                 }}
                                 render={({ field: { onChange, onBlur, value } }) => (
                                     <InputWithIcon
-                                        iconName="slideshare"
+                                        iconName='email'
                                         onChange={onChange}
                                         textInputProps={{
                                             onBlur: onBlur,
-                                            defaultValue: value,
-                                            placeholder: t('register_input_first_name_placeholder'),
+                                            value: value,
+                                            placeholder: t('register_input_email_placeholder'),
+                                            keyboardType: 'email-address',
                                         }}
-                                        error={!!errors.firstName}
+                                        error={!!errors.email}
                                     />
                                 )}
-                                name="firstName"
+                                name="email"
                             />
-                            {errors.firstName && (
-                                <Text style={[TextStyle.small, styles.textError]}>
-                                    {errors.firstName.message}
-                                </Text>
-                            )}
+                            {errors.email && <Text style={[TextStyle.small, styles.textError]}>{errors.email.message}</Text>}
 
                             <Controller
                                 control={control}
                                 rules={{
-                                    required: 'Last name is required',
+                                    required: 'Password is required',
+                                    minLength: {
+                                        value: 6,
+                                        message: 'Password must be at least 6 characters long',
+                                    },
                                 }}
                                 render={({ field: { onChange, onBlur, value } }) => (
                                     <InputWithIcon
-                                        iconName="palette"
+                                        iconName='fingerprint'
                                         onChange={onChange}
                                         textInputProps={{
                                             onBlur: onBlur,
-                                            defaultValue: value,
-                                            placeholder: t('register_input_last_name_placeholder'),
+                                            value: value,
+                                            placeholder: t('register_input_password_placeholder'),
+                                            secureTextEntry: true,
                                         }}
-                                        error={!!errors.lastName}
+                                        error={!!errors.password}
                                     />
                                 )}
-                                name="lastName"
+                                name="password"
                             />
-                            {errors.lastName && (
-                                <Text style={[TextStyle.small, styles.textError]}>
-                                    {errors.lastName.message}
-                                </Text>
-                            )}
+                            {errors.password && <Text style={[TextStyle.small, styles.textError]}>{errors.password.message}</Text>}
+
+                            <Controller
+                                control={control}
+                                rules={{
+                                    required: 'Please confirm your password',
+                                    validate: value =>
+                                        value === password || 'Passwords do not match',
+                                }}
+                                render={({ field: { onChange, onBlur, value } }) => (
+                                    <InputWithIcon
+                                        iconName='fingerprint'
+                                        onChange={onChange}
+                                        textInputProps={{
+                                            onBlur: onBlur,
+                                            value: value,
+                                            placeholder: t('register_input_password_again_placeholder'),
+                                            secureTextEntry: true,
+                                        }}
+                                        error={!!errors.validatePassword}
+                                    />
+                                )}
+                                name="validatePassword"
+                            />
+                            {errors.validatePassword && <Text style={[TextStyle.small, styles.textError]}>{errors.validatePassword.message}</Text>}
                         </VStack>
 
                         <Spacer />
@@ -125,40 +146,25 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
                                     'Terms & Conditions',
                                 )[0]
                             }
-                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
-                                Terms & Conditions
-                            </Text>
+                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>Terms & Conditions</Text>
                             {
                                 t('register_text_sign_in_up_information')
                                     .split('Terms & Conditions')[1]
                                     .split('Privacy Policy')[0]
                             }
-                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
-                                Privacy Policy
-                            </Text>
+                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>Privacy Policy</Text>
                             {
                                 t('register_text_sign_in_up_information').split(
                                     'Privacy Policy',
                                 )[1]
                             }
                         </Text>
+
                         <Button
                             containerStyle={styles.button}
                             text={t('register_button')}
                             onPress={handleSubmit(onSubmit)}
                         />
-
-                        <HStack>
-                            <Text style={[TextStyle.blue, TextStyle.small]}>
-                                {t('register_text_already_joined')}
-                            </Text>
-                            <Pressable onPress={navigateLogin}>
-                                <Text
-                                    style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
-                                    {t('register_redirect_login')}
-                                </Text>
-                            </Pressable>
-                        </HStack>
                     </VStack>
                 </KeyboardAvoidingView>
             </VStack>
@@ -170,10 +176,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
-    },
-    backgroundImage: {
-        width: 300,
-        height: 250,
     },
     overlayContainer: {
         flex: 1,
@@ -199,6 +201,6 @@ const styles = StyleSheet.create({
     textError: {
         textAlign: 'left',
         width: '100%',
-        paddingHorizontal: 30,
-    },
+        paddingHorizontal: 30
+    }
 });

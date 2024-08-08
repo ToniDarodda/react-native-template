@@ -11,7 +11,6 @@ const SeparatorComponent: React.FC<ISeparatorProps> = ({ style, children }) => {
 
 export const Separator = React.memo(SeparatorComponent);
 
-
 const separatorStyle = StyleSheet.create({
     separator: {
         width: '100%',
