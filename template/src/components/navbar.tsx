@@ -12,6 +12,7 @@ interface INavbarProps extends ICommonComponents {
 }
 
 const NavBarComponent: React.FC<INavbarProps> = ({ navigation, style }) => {
+
     const handleNavigate = (name: keyof Omit<MainRootStackParamList, 'RegisterPIS'>) => {
         navigation.navigate(name)
     }
