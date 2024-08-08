@@ -2,6 +2,7 @@ import React from 'react';
 import { Pressable, SafeAreaView, StyleSheet } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import {
     H1,
@@ -15,7 +16,6 @@ import {
 import { MainRootStackParamList } from '../navigations/main-root-stack';
 import globalStyles from '../styles/global';
 import { Text as TextStyle } from '../styles/text';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Welcome'>;

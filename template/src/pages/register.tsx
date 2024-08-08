@@ -8,7 +8,7 @@ import {
     SafeAreaView,
     StyleSheet,
 } from 'react-native';
-import { useForm, Controller } from "react-hook-form"
+import { useForm, Controller } from 'react-hook-form';
 
 import { MainRootStackParamList } from '../navigations/main-root-stack';
 import {
@@ -36,18 +36,20 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
         formState: { errors },
     } = useForm<RegisterFL>({
         defaultValues: {
-            firstName: "",
-            lastName: "",
+            firstName: '',
+            lastName: '',
         },
-    })
+    });
 
     const onSubmit = (data: RegisterFL) => {
         navigation.navigate('RegisterPIS', { ...data });
-    }
+    };
 
     const navigateLogin = () => {
         navigation.navigate('Login');
     };
+
+    console.log(errors);
 
     return (
         <SafeAreaView style={styles.overlayContainer}>
@@ -55,39 +57,64 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
                 <KeyboardAvoidingView
                     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                     style={styles.container}>
-
                     <VStack style={[styles.inner]}>
-
                         <VStack style={{ paddingBottom: 40 }}>
                             <H1 style={TextStyle.blue}>{t('register_h1_text')}</H1>
-                            <Text style={TextStyle.blue}>{t('register_text_information')}</Text>
+                            <Text style={TextStyle.blue}>
+                                {t('register_text_information')}
+                            </Text>
                         </VStack>
 
                         <VStack style={styles.gaper}>
                             <Controller
                                 control={control}
                                 rules={{
-                                    required: true,
+                                    required: 'First name is required',
                                 }}
                                 render={({ field: { onChange, onBlur, value } }) => (
-
-                                    <InputWithIcon iconName='slideshare' onChange={onChange} textInputProps={{ onBlur: onBlur, defaultValue: value, placeholder: t('register_input_first_name_placeholder') }} error={!!errors.firstName} />
-
+                                    <InputWithIcon
+                                        iconName="slideshare"
+                                        onChange={onChange}
+                                        textInputProps={{
+                                            onBlur: onBlur,
+                                            defaultValue: value,
+                                            placeholder: t('register_input_first_name_placeholder'),
+                                        }}
+                                        error={!!errors.firstName}
+                                    />
                                 )}
                                 name="firstName"
                             />
+                            {errors.firstName && (
+                                <Text style={[TextStyle.small, styles.textError]}>
+                                    {errors.firstName.message}
+                                </Text>
+                            )}
+
                             <Controller
                                 control={control}
                                 rules={{
-                                    required: true,
+                                    required: 'Last name is required',
                                 }}
                                 render={({ field: { onChange, onBlur, value } }) => (
-
-                                    <InputWithIcon iconName='palette' onChange={onChange} textInputProps={{ onBlur: onBlur, defaultValue: value, placeholder: t('register_input_last_name_placeholder') }} error={!!errors.lastName} />
-
+                                    <InputWithIcon
+                                        iconName="palette"
+                                        onChange={onChange}
+                                        textInputProps={{
+                                            onBlur: onBlur,
+                                            defaultValue: value,
+                                            placeholder: t('register_input_last_name_placeholder'),
+                                        }}
+                                        error={!!errors.lastName}
+                                    />
                                 )}
                                 name="lastName"
                             />
+                            {errors.lastName && (
+                                <Text style={[TextStyle.small, styles.textError]}>
+                                    {errors.lastName.message}
+                                </Text>
+                            )}
                         </VStack>
 
                         <Spacer />
@@ -98,13 +125,17 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
                                     'Terms & Conditions',
                                 )[0]
                             }
-                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>Terms & Conditions</Text>
+                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
+                                Terms & Conditions
+                            </Text>
                             {
                                 t('register_text_sign_in_up_information')
                                     .split('Terms & Conditions')[1]
                                     .split('Privacy Policy')[0]
                             }
-                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>Privacy Policy</Text>
+                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
+                                Privacy Policy
+                            </Text>
                             {
                                 t('register_text_sign_in_up_information').split(
                                     'Privacy Policy',
@@ -122,12 +153,12 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
                                 {t('register_text_already_joined')}
                             </Text>
                             <Pressable onPress={navigateLogin}>
-                                <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
+                                <Text
+                                    style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
                                     {t('register_redirect_login')}
                                 </Text>
                             </Pressable>
                         </HStack>
-
                     </VStack>
                 </KeyboardAvoidingView>
             </VStack>
@@ -164,5 +195,10 @@ const styles = StyleSheet.create({
     },
     gaper: {
         gap: 20,
-    }
+    },
+    textError: {
+        textAlign: 'left',
+        width: '100%',
+        paddingHorizontal: 30,
+    },
 });

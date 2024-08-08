@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, SafeAreaView, StyleSheet } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { Controller, useForm } from 'react-hook-form';
 import Toast from 'react-native-root-toast';
 
 import { MainRootStackParamList } from '../navigations/main-root-stack';
@@ -18,7 +19,6 @@ import globalStyles from '../styles/global';
 import { Text as TextStyle } from '../styles/text';
 import { useUserLogin } from '../queries/user';
 import { FormLogin } from '../types/forms/login';
-import { Controller, useForm } from 'react-hook-form';
 
 type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Login'>;
@@ -41,6 +41,7 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
     })
 
     const onSubmit = (data: FormLogin) => {
+        console.log('oui')
         userLogin(data);
     }
 
