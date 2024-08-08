@@ -18,15 +18,17 @@ Created using the default components provided in the project.
 
 ### Welcome Screen
 
-![Welcome Screen](./read-me-assets/welcome.png)
+<img src="./read-me-assets/welcome.png" alt="Welcome Screen" width="300" height="auto">
+
 
 ### Login Screen
 
-![Login Screen](./read-me-assets/login.png)
+<img src="./read-me-assets/login.png" alt="Login Screen" width="300" height="auto">
 
 ### Register Screen
 
-![Register Screen](./read-me-assets/register.png)
+<img src="./read-me-assets/register.png" alt="register Screen" width="300" height="auto">
+
 
 ## Features
 
