@@ -10,8 +10,9 @@ import {
 } from 'react-native';
 
 import { Text as ITextStyle } from '../styles/text';
+import { ICommonComponents } from '../types/common-component';
 
-interface IButtonProps {
+interface IButtonProps extends ICommonComponents {
     text: string;
     isLoading?: boolean | undefined;
     containerStyle?: StyleProp<TextStyle> | undefined;
@@ -26,6 +27,7 @@ export const Button: React.FC<IButtonProps> = ({
     containerStyle,
     textStyle,
     onPress,
+    children,
 }) => {
     const [isPressed, setIsPressed] = useState(false);
 
@@ -51,7 +53,10 @@ export const Button: React.FC<IButtonProps> = ({
                 {isLoading ? (
                     <ActivityIndicator />
                 ) : (
-                    <Text style={[composedButtonStyle, textStyle]}>{text}</Text>
+                    <>
+                        <Text style={[composedButtonStyle, textStyle]}>{text}</Text>
+                        {children}
+                    </>
                 )}
             </View>
         </TouchableWithoutFeedback>
@@ -61,6 +66,7 @@ export const Button: React.FC<IButtonProps> = ({
 const buttonStyle = StyleSheet.create({
     container: {
         width: '100%',
+        flexDirection: 'row',
         padding: 12,
         borderRadius: 8,
         justifyContent: 'center',

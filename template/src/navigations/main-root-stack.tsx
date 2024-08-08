@@ -9,8 +9,10 @@ import { ProfileScreen } from '../pages/profile';
 import { isAuthenticated } from '../stores/selectors/user';
 import { registerPIS } from '../types/navigations/register';
 import { RegisterPISScreen } from '../pages/register-pis';
+import { WelcomeScreen } from '../pages/welcome';
 
 export type MainRootStackParamList = {
+  Welcome: undefined;
   Register: undefined;
   RegisterPIS: registerPIS;
 
@@ -30,12 +32,14 @@ export const MainRootStack = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName={isAuth ? 'Home' : 'Login'}
+      initialRouteName={isAuth ? 'Welcome' : 'Welcome'}
       screenOptions={{
         headerShown: false,
         animation: 'none',
       }}
     >
+      <Stack.Screen name="Welcome" component={WelcomeScreen} />
+
       <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen name="RegisterPIS" component={RegisterPISScreen} />
 

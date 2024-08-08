@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTranslation } from 'react-i18next';
 import {
-    Keyboard,
     KeyboardAvoidingView,
     Platform,
     Pressable,
@@ -17,13 +16,11 @@ import {
     H1,
     Text,
     Button,
-    Image,
     Spacer,
     HStack,
     InputWithIcon,
 } from '../components/index';
 import { Text as TextStyle } from '../styles/text';
-import globalStyles from '../styles/global';
 import { RegisterFL } from '../types/forms/register';
 
 type Props = {
@@ -48,24 +45,6 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
         navigation.navigate('RegisterPIS', { ...data });
     }
 
-    const [keyboardVisible, setKeyboardVisible] = useState<boolean>(false);
-
-    useEffect(() => {
-        const keyboardDidShowListener = Keyboard.addListener(
-            'keyboardDidShow',
-            () => setKeyboardVisible(true),
-        );
-        const keyboardDidHideListener = Keyboard.addListener(
-            'keyboardDidHide',
-            () => setKeyboardVisible(false),
-        );
-
-        return () => {
-            keyboardDidHideListener.remove();
-            keyboardDidShowListener.remove();
-        };
-    }, []);
-
     const navigateLogin = () => {
         navigation.navigate('Login');
     };
@@ -73,21 +52,13 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.overlayContainer}>
             <VStack style={styles.inner}>
-                <Image
-                    source={require('../assets/bg-6.jpg')}
-                    style={[
-                        styles.backgroundImage,
-                        keyboardVisible && styles.contentHidden,
-                    ]}
-                />
-
                 <KeyboardAvoidingView
                     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                     style={styles.container}>
 
-                    <VStack style={[styles.inner, globalStyles.alignItemsStart]}>
+                    <VStack style={[styles.inner]}>
 
-                        <VStack style={globalStyles.alignItemsStart}>
+                        <VStack style={{ paddingBottom: 40 }}>
                             <H1 style={TextStyle.blue}>{t('register_h1_text')}</H1>
                             <Text style={TextStyle.blue}>{t('register_text_information')}</Text>
                         </VStack>

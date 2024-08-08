@@ -5,6 +5,7 @@ import * as Localization from 'react-native-localize';
 import login from '../traduction/login/login.en.json';
 import register from '../traduction/register/register.en.json';
 import component from '../traduction/component.en.json';
+import welcome from '../traduction/welcome/welcome.en.json';
 
 // Define your resources here
 const resources = {
@@ -12,6 +13,7 @@ const resources = {
     login,
     register,
     component,
+    welcome,
   },
 } as const;
 

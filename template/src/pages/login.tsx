@@ -10,7 +10,6 @@ import {
     H1,
     Text,
     Button,
-    Image,
     Spacer,
     HStack,
     InputWithIcon,
@@ -19,6 +18,7 @@ import globalStyles from '../styles/global';
 import { Text as TextStyle } from '../styles/text';
 import { useUserLogin } from '../queries/user';
 import { FormLogin } from '../types/forms/login';
+import { Controller, useForm } from 'react-hook-form';
 
 type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Login'>;
@@ -29,28 +29,21 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
 
     const { mutate: userLogin, isLoading, isSuccess, isError } = useUserLogin();
 
-    const [form, setForm] = useState<FormLogin>({
-        email: '',
-        password: '',
+    const {
+        control,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<FormLogin>({
+        defaultValues: {
+            email: "",
+            password: "",
+        },
     })
 
-    const handleMailChange = (value: string) => {
-        setForm({
-            ...form,
-            email: value,
-        });
-    };
-
-    const handlePasswordChange = (value: string) => {
-        setForm({
-            ...form,
-            password: value,
-        });
-    };
-
-    const handleSubmit = () => {
-        userLogin(form)
+    const onSubmit = (data: FormLogin) => {
+        userLogin(data);
     }
+
 
     const navigateRegister = () => {
         navigation.navigate('Register');
@@ -83,18 +76,65 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
         <SafeAreaView style={styles.overlayContainer}>
             <VStack style={styles.inner}>
 
-                <Image
-                    source={require('../assets/bg-6.jpg')}
-                    style={styles.backgroundImage}
-                />
 
-                <VStack style={[styles.inner, globalStyles.alignItemsStart]}>
+                <VStack style={[styles.inner]}>
 
                     <H1 style={TextStyle.blue}>{t('login_h1_text')}</H1>
-                    <Text style={TextStyle.blue}>{t('login_text_information')}</Text>
+                    <Text style={[TextStyle.blue, { paddingBottom: 40 }]}>{t('login_text_information')}</Text>
 
-                    <InputWithIcon iconName='email' onChange={handleMailChange} textInputProps={{ placeholder: t('login_input_email_placeholder'), keyboardType: 'email-address' }} />
-                    <InputWithIcon iconName='lock' onChange={handlePasswordChange} textInputProps={{ placeholder: t('login_input_password_placeholder'), keyboardType: 'email-address', secureTextEntry: true, }} />
+                    <Controller
+                        control={control}
+                        rules={{
+                            required: 'Email is required',
+                            pattern: {
+                                value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                                message: 'Invalid email address',
+                            },
+                        }}
+                        render={({ field: { onChange, onBlur, value } }) => (
+                            <InputWithIcon
+                                iconName='email'
+                                onChange={onChange}
+                                textInputProps={{
+                                    onBlur: onBlur,
+                                    value: value,
+                                    placeholder: t('login_input_email_placeholder'),
+                                    keyboardType: 'email-address',
+                                }}
+                                error={!!errors.email}
+                            />
+                        )}
+                        name="email"
+                    />
+                    {errors.email && <Text style={[TextStyle.small, styles.textError]}>{errors.email.message}</Text>}
+
+
+                    <Controller
+                        control={control}
+                        rules={{
+                            required: 'Password is required',
+                            minLength: {
+                                value: 6,
+                                message: 'Password must be at least 6 characters long',
+                            },
+                        }}
+                        render={({ field: { onChange, onBlur, value } }) => (
+                            <InputWithIcon
+                                iconName='lock'
+                                onChange={onChange}
+                                textInputProps={{
+                                    onBlur: onBlur,
+                                    value: value,
+                                    placeholder: t('login_input_password_placeholder'),
+                                    secureTextEntry: true,
+                                }}
+                                error={!!errors.password}
+                            />
+                        )}
+                        name="password"
+                    />
+                    {errors.password && <Text style={[TextStyle.small, styles.textError]}>{errors.password.message}</Text>}
+
 
                     <VStack style={globalStyles.alignItemsEnd}>
                         <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
@@ -104,7 +144,7 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
 
                     <Spacer />
 
-                    <Button containerStyle={styles.button} text={t('login_button')} onPress={handleSubmit} isLoading={isLoading} />
+                    <Button containerStyle={styles.button} text={t('login_button')} onPress={handleSubmit(onSubmit)} isLoading={isLoading} />
 
                     <HStack>
 
@@ -147,5 +187,10 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#0165fe',
+    },
+    textError: {
+        textAlign: 'left',
+        width: '100%',
+        paddingHorizontal: 30
     },
 });

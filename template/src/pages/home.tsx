@@ -20,7 +20,6 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
 
     return (
         <VStack style={styles.container}>
-            <Navbar navigation={navigation} />
 
             <SafeAreaView style={styles.safeArea}>
                 <VStack style={styles.content}>
@@ -29,6 +28,8 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
                     <Button text={'Profile'} onPress={navigateProfile} containerStyle={styles.button} />
                 </VStack>
             </SafeAreaView>
+
+            <Navbar navigation={navigation} />
         </VStack>
     );
 };

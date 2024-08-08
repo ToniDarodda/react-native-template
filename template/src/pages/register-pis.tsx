@@ -19,7 +19,6 @@ import {
     InputWithIcon,
 } from '../components/index';
 import { Text as TextStyle } from '../styles/text';
-import globalStyles from '../styles/global';
 import { RegisterP } from '../types/forms/register';
 
 type Props = {
@@ -54,10 +53,10 @@ export const RegisterPISScreen: React.FC<Props> = ({ navigation }) => {
                     style={styles.container}
                 >
 
-                    <VStack style={[styles.inner, globalStyles.alignItemsStart]}>
+                    <VStack style={[styles.inner]}>
 
-                        <VStack style={[globalStyles.alignItemsStart, { gap: 0 }]}>
-                            <H1 style={[TextStyle.lightBlue, { fontSize: 28 }]}>{t('register_pis_h1_information')}</H1>
+                        <VStack style={{ paddingBottom: 40 }}>
+                            <H1 style={[TextStyle.blue, { fontSize: 28 }]}>{t('register_pis_h1_information')}</H1>
                             <Text style={TextStyle.darkGray}>{t('register_pis_text_information')}</Text>
                         </VStack>
 
