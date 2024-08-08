@@ -93,8 +93,8 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
                     <H1 style={TextStyle.blue}>{t('login_h1_text')}</H1>
                     <Text style={TextStyle.blue}>{t('login_text_information')}</Text>
 
-                    <InputWithIcon placeHolder={t('login_input_email_placeholder')} iconName='email' onChange={handleMailChange} keyboardType='email-address' />
-                    <InputWithIcon placeHolder={t('login_input_password_placeholder')} iconName='lock' onChange={handlePasswordChange} secureTextEntry />
+                    <InputWithIcon iconName='email' onChange={handleMailChange} textInputProps={{ placeholder: t('login_input_email_placeholder'), keyboardType: 'email-address' }} />
+                    <InputWithIcon iconName='lock' onChange={handlePasswordChange} textInputProps={{ placeholder: t('login_input_password_placeholder'), keyboardType: 'email-address', secureTextEntry: true, }} />
 
                     <VStack style={globalStyles.alignItemsEnd}>
                         <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>

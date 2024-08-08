@@ -7,12 +7,18 @@ import { RegisterScreen } from '../pages/register';
 import { HomeScreen } from '../pages/home';
 import { ProfileScreen } from '../pages/profile';
 import { isAuthenticated } from '../stores/selectors/user';
+import { registerPIS } from '../types/navigations/register';
+import { RegisterPISScreen } from '../pages/register-pis';
 
 export type MainRootStackParamList = {
   Register: undefined;
+  RegisterPIS: registerPIS;
+
   Login: undefined;
+
   LostCredentials: undefined;
   Congratulations: undefined;
+
   Home: undefined;
   Profile: undefined;
 };
@@ -30,10 +36,13 @@ export const MainRootStack = () => {
         animation: 'none',
       }}
     >
+      <Stack.Screen name="Register" component={RegisterScreen} />
+      <Stack.Screen name="RegisterPIS" component={RegisterPISScreen} />
+
+      <Stack.Screen name="Login" component={LoginScreen} />
+
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Profile" component={ProfileScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Register" component={RegisterScreen} />
     </Stack.Navigator>
   );
 };
