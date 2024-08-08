@@ -41,7 +41,6 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
     })
 
     const onSubmit = (data: FormLogin) => {
-        console.log('oui')
         userLogin(data);
     }
 
