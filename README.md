@@ -160,7 +160,7 @@ yarn test
 
 ## 📜 License
 
-This project is licensed under the UNLICENSED License.
+There is no license you'r free to use it.
 
 ## 👤 Author
 
