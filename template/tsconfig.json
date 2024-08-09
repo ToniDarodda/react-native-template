@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "jsx": "react",
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "noEmit": true,
+      "resolveJsonModule": true,
+      "types": ["jest", "node"] // Ensure Jest and Node types are included
+    },
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "__tests__/**/*.ts",
+      "__tests__/**/*.tsx"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  }
+  
