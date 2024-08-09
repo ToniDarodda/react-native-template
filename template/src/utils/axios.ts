@@ -1,8 +1,10 @@
 import axios, {AxiosInstance} from 'axios';
 import Cookies from '@react-native-cookies/cookies';
 
+import { BACKEND_URL } from '../env/env';
+
 export const Fetch: AxiosInstance = axios.create({
-  baseURL: 'http://192.168.1.25:3000',
+  baseURL: BACKEND_URL,
   timeout: 5000,
   timeoutErrorMessage:
     'Request timeout there is maybe a problem with the server!',
@@ -11,7 +13,8 @@ export const Fetch: AxiosInstance = axios.create({
 
 Fetch.interceptors.request.use(
   async config => {
-    const cookie = await Cookies.get('template_cookie');
+    const cookie = await Cookies.get(BACKEND_URL);
+
     if (cookie && cookie.value) {
       config.headers.Authorization = `Bearer ${cookie.value}`;
     }

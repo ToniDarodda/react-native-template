@@ -1,8 +1,10 @@
 import Cookies from '@react-native-cookies/cookies';
+
 import { AuthToken } from '../types/user';
+import { BACKEND_URL, TEMPLATE_COOKIE_ACCESS_TOKEN, TEMPLATE_COOKIE_REFRESH_TOKEN } from '../env/env';
 
 export const setCookie = async (value: string, name: string) => {
-    await Cookies.set('http://192.168.1.25:3000', {
+    await Cookies.set(BACKEND_URL, {
         name,
         value,
         path: '/',
@@ -11,11 +13,11 @@ export const setCookie = async (value: string, name: string) => {
 }
 
 export const getCookie = async (): Promise<AuthToken | null> => {
-  const cookies = await Cookies.get('http://192.168.1.25');
+  const cookies = await Cookies.get(BACKEND_URL);
   
-  if (cookies['template_access_token']?.value === '' ||cookies['template_refresh_token']?.value  === '' ) return null;
+  if (cookies[TEMPLATE_COOKIE_ACCESS_TOKEN]?.value === '' ||cookies[TEMPLATE_COOKIE_REFRESH_TOKEN]?.value  === '' ) return null;
 
-  return { access_token : cookies['template_access_token']?.value, refresh_token: cookies['template_refresh_token']?.value };
+  return { access_token : cookies[TEMPLATE_COOKIE_ACCESS_TOKEN]?.value, refresh_token: cookies[TEMPLATE_COOKIE_REFRESH_TOKEN]?.value };
 };
 
 export const removeCookie = async () => {

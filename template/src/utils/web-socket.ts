@@ -1,6 +1,8 @@
 import io from 'socket.io-client';
 
-const SERVER_URL = 'http://192.168.1.25:3000';
+import { BACKEND_URL } from '../env/env';
+
+const SERVER_URL = BACKEND_URL;
 
 const socket = io(SERVER_URL, {
   transports: ['websocket'],
