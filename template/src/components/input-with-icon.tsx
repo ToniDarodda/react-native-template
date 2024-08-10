@@ -1,9 +1,15 @@
 import React from 'react';
 
-import { KeyboardTypeOptions, StyleSheet, TextInput, TextInputProps } from 'react-native';
+import {
+    KeyboardTypeOptions,
+    StyleSheet,
+    TextInput,
+    TextInputProps,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/Entypo';
+
 import { ICommonComponents } from '../types/common-component';
 import { Text as TextStyle } from '../styles/text';
-import Icon from 'react-native-vector-icons/Entypo';
 import { HStack } from './hstack';
 
 interface IInputWithIconProps extends ICommonComponents {
@@ -54,7 +60,7 @@ const inputStyle = StyleSheet.create({
     error: {
         borderBottomWidth: 1,
         borderColor: 'red',
-    }
+    },
 });
 
 const composedInputStyle = StyleSheet.compose(

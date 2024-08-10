@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text as RText } from "react-native"
+
 import { ICommonComponents } from "../types/common-component";
 import { Text as TextStyle } from '../styles/text';
 

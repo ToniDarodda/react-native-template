@@ -6,6 +6,7 @@ import {
     ImageStyle,
     ImageSourcePropType,
 } from 'react-native';
+
 import { ICommonComponents } from '../types/common-component';
 
 interface IImageProps extends ICommonComponents {
@@ -32,6 +33,6 @@ const imageStyle = StyleSheet.create({
         width: 400,
         height: 300,
         resizeMode: 'contain',
-        borderRadius: 8
-    }
+        borderRadius: 8,
+    },
 });

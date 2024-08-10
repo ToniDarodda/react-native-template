@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, View } from "react-native"
+
 import { ICommonComponents } from "../types/common-component";
 
 interface IVStackProps extends ICommonComponents {
