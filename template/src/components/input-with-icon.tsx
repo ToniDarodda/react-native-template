@@ -28,6 +28,7 @@ const InputWithIconComponent: React.FC<IInputWithIconProps> = ({
                 style={[composedInputStyle, error && inputStyle.error, style]}
                 onChangeText={onChange}
                 {...textInputProps}
+                testID="text-input"
             />
         </HStack>
     );
