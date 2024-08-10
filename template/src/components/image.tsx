@@ -19,6 +19,7 @@ const ImageComponent: React.FC<IImageProps> = ({ source, style }) => {
                 source={source}
                 resizeMode="cover"
                 style={[imageStyle.image, style as ImageStyle]}
+                testID="image-component"
             />
         </View>
     );

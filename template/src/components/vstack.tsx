@@ -8,7 +8,7 @@ interface IVStackProps extends ICommonComponents {
 
 const VStackComponent: React.FC<IVStackProps> = ({ children, style }) => {
     return (
-        <View style={[vstackStyle.container, style]}>
+        <View style={[vstackStyle.container, style]} testID="vstack-container">
             {children}
         </View>
     )

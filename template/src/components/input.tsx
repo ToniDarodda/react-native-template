@@ -1,18 +1,25 @@
-import React from "react"
+import React from 'react';
 import { StyleSheet, TextInput } from 'react-native';
 
-import { ICommonComponents } from "../types/common-component";
+import { ICommonComponents } from '../types/common-component';
 import { Text as TextStyle } from '../styles/text';
 
 interface IInputProps extends ICommonComponents {
     placeHolder?: string;
+    onChange?: (text: string) => void;
 }
 
-const InputComponent: React.FC<IInputProps> = ({ placeHolder, style }) => {
+const InputComponent: React.FC<IInputProps> = ({ placeHolder, onChange, style }) => {
     return (
-        <TextInput placeholderTextColor={'gray'} placeholder={placeHolder} style={[composedInputStyle, style]} />
-    )
-}
+        <TextInput
+            placeholderTextColor={'gray'}
+            placeholder={placeHolder}
+            style={[composedInputStyle, style]}
+            onChangeText={onChange}
+            testID="input-component"
+        />
+    );
+};
 
 export const Input = React.memo(InputComponent);
 
@@ -26,7 +33,10 @@ const inputStyle = StyleSheet.create({
         borderColor: '#e9eaed',
         minHeight: 48,
         minWidth: '100%',
-    }
-})
+    },
+});
 
-const composedInputStyle = StyleSheet.compose(inputStyle.container, TextStyle.regular);
+const composedInputStyle = StyleSheet.compose(
+    inputStyle.container,
+    TextStyle.regular,
+);

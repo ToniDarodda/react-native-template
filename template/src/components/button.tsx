@@ -5,8 +5,8 @@ import {
     Text,
     TextStyle,
     View,
-    TouchableWithoutFeedback,
     ActivityIndicator,
+    TouchableOpacity,
 } from 'react-native';
 
 import { Text as ITextStyle } from '../styles/text';
@@ -29,29 +29,17 @@ export const Button: React.FC<IButtonProps> = ({
     onPress,
     children,
 }) => {
-    const [isPressed, setIsPressed] = useState(false);
-
-    const handlePressIn = () => {
-        setIsPressed(true);
-    };
-
-    const handlePressOut = () => {
-        setIsPressed(false);
-        if (onPress) onPress();
-    };
 
     return (
-        <TouchableWithoutFeedback
-            onPressIn={handlePressIn}
-            onPressOut={handlePressOut}>
+        <TouchableOpacity
+            onPress={onPress} style={buttonStyle.touchable}>
             <View
                 style={[
                     buttonStyle.container,
-                    isPressed && buttonStyle.containerPressed,
                     containerStyle,
                 ]}>
                 {isLoading ? (
-                    <ActivityIndicator />
+                    <ActivityIndicator testID="activity-indicator" />
                 ) : (
                     <>
                         <Text style={[composedButtonStyle, textStyle]}>{text}</Text>
@@ -59,11 +47,16 @@ export const Button: React.FC<IButtonProps> = ({
                     </>
                 )}
             </View>
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
     );
 };
 
 const buttonStyle = StyleSheet.create({
+    touchable: {
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     container: {
         width: '100%',
         flexDirection: 'row',
@@ -82,10 +75,6 @@ const buttonStyle = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 1.4,
         elevation: 3,
-    },
-    containerPressed: {
-        shadowOpacity: 0,
-        elevation: 0,
     },
     textContainer: {
         fontSize: 18,

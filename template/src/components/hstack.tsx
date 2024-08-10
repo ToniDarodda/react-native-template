@@ -8,7 +8,7 @@ interface IHStackProps extends ICommonComponents {
 
 const HStackComponent: React.FC<IHStackProps> = ({ children, style }) => {
     return (
-        <View style={[hstackStyle.container, style]}>
+        <View style={[hstackStyle.container, style]} testID="hstack-component">
             {children}
         </View>
     )
