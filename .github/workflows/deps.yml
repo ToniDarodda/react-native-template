@@ -16,3 +16,4 @@ jobs:
           node-version: 21.7.1
       - run: npm install -g yarn
       - run: yarn install
+        working-directory: template
