@@ -154,10 +154,6 @@ Ensure you have the following installed:
 
    The app will be available on your emulator or device.
 
-### API Documentation
-
-Documentation for API endpoints is available at `http://localhost:3000/api`.
-
 ## 🧪 Testing
 
 To run the tests, use the following command:
