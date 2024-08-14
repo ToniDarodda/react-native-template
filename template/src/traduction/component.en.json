@@ -1,3 +1,5 @@
 {
-    "separator_with_text": "OR"
+    "separator_with_text": "OR",
+    "search_bar_placeholder": "Search items..."
+
 }
