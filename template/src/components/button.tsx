@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     StyleProp,
     StyleSheet,
@@ -29,15 +29,9 @@ export const Button: React.FC<IButtonProps> = ({
     onPress,
     children,
 }) => {
-
     return (
-        <TouchableOpacity
-            onPress={onPress} style={buttonStyle.touchable}>
-            <View
-                style={[
-                    buttonStyle.container,
-                    containerStyle,
-                ]}>
+        <TouchableOpacity onPress={onPress} style={buttonStyle.touchable}>
+            <View style={[buttonStyle.container, containerStyle]}>
                 {isLoading ? (
                     <ActivityIndicator testID="activity-indicator" />
                 ) : (
