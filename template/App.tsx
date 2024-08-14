@@ -7,10 +7,11 @@ import { View, ActivityIndicator } from 'react-native';
 import './src/utils/i18n';
 
 import { MainRootStack } from './src/navigations/main-root-stack';
-import { setTokens } from './src/stores/slices/user-slice';
+import { setTokens, setUser } from './src/stores/slices/user-slice';
 import { AppDispatch, store } from './src/stores/store';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import { getCookie } from './src/utils/cookie-manager';
+import { useGetUser } from './src/queries/user';
 
 
 const queryClient = new QueryClient();
@@ -20,17 +21,27 @@ const App: React.FC = () => {
 
   const [loading, setLoading] = useState(true);
 
+  const { data: account, isLoading: userLoading } = useGetUser();
+
+
 
   useEffect(() => {
     const checkAuthentication = async () => {
       const cookie = await getCookie();
+      if (cookie) {
+        dispatch(setTokens(cookie));
+      }
 
-      dispatch(setTokens(cookie));
-      setLoading(false);
+      if (!userLoading && account) {
+        dispatch(setUser(account));
+        setLoading(false);
+      } else if (!userLoading && !account) {
+        setLoading(false);
+      }
     };
 
     checkAuthentication();
-  }, [dispatch]);
+  }, [account, userLoading]);
 
   if (loading) {
 
@@ -45,9 +56,7 @@ const App: React.FC = () => {
   return (
     <RootSiblingParent>
       <SafeAreaProvider>
-        <QueryClientProvider client={queryClient}>
-          <MainRootStack />
-        </QueryClientProvider>
+        <MainRootStack />
       </SafeAreaProvider>
     </RootSiblingParent >
   );
@@ -57,7 +66,9 @@ const AppWrapper: React.FC = () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <App />
+        <QueryClientProvider client={queryClient}>
+          <App />
+        </QueryClientProvider>
       </NavigationContainer>
     </Provider>
   );
