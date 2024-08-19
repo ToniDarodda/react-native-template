@@ -51,7 +51,7 @@ const Welcome: React.FC<Props> = ({ navigation }) => {
                         text={t('getting_started_button')}
                         onPress={handleNavigationRegister}
                     >
-                        <Icon name={'arrow-forward-circle-outline'} size={24} color="white" style={{ position: 'absolute', right: 20 }} />
+                        <Icon name={'arrow-forward-circle-outline'} size={24} color="white" style={styles.icon} />
                     </Button>
                     <HStack>
                         <Text style={[TextStyle.blue, TextStyle.small]}>
@@ -91,6 +91,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         gap: 12,
+    },
+    icon: {
+        position: 'absolute',
+        right: 20,
     },
     button: {
         backgroundColor: '#0165fe',

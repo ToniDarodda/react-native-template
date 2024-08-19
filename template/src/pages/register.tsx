@@ -56,7 +56,7 @@ const Register: React.FC<Props> = ({ navigation }) => {
                     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                     style={styles.container}>
                     <VStack style={[styles.inner]}>
-                        <VStack style={{ paddingBottom: 40 }}>
+                        <VStack style={styles.textSpace}>
                             <H1 style={TextStyle.blue}>{t('register_h1_text')}</H1>
                             <Text style={TextStyle.blue}>
                                 {t('register_text_information')}
@@ -189,6 +189,9 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#0165fe',
+    },
+    textSpace: {
+        padding: 40,
     },
     contentHidden: {
         opacity: 0.3,

@@ -80,7 +80,7 @@ export const Login: React.FC<Props> = ({ navigation }) => {
                 <VStack style={[styles.inner]}>
 
                     <H1 style={TextStyle.blue}>{t('login_h1_text')}</H1>
-                    <Text style={[TextStyle.blue, { paddingBottom: 40 }]}>{t('login_text_information')}</Text>
+                    <Text style={[TextStyle.blue, styles.textSpace]}>{t('login_text_information')}</Text>
 
                     <Controller
                         control={control}
@@ -176,6 +176,9 @@ const styles = StyleSheet.create({
     overlayContainer: {
         flex: 1,
         backgroundColor: 'white',
+    },
+    textSpace: {
+        paddingBottom: 40,
     },
     inner: {
         flex: 1,

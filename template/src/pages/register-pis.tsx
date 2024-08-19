@@ -96,8 +96,8 @@ const RegisterPISS: React.FC<Props> = ({ navigation, route }) => {
 
                     <VStack style={[styles.inner]}>
 
-                        <VStack style={{ paddingBottom: 40 }}>
-                            <H1 style={[TextStyle.blue, { fontSize: 28 }]}>{t('register_pis_h1_information')}</H1>
+                        <VStack style={styles.textSpace}>
+                            <H1 style={[TextStyle.blue, styles.textSize]}>{t('register_pis_h1_information')}</H1>
                             <Text style={TextStyle.darkGray}>{t('register_pis_text_information')}</Text>
                         </VStack>
 
@@ -233,6 +233,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         gap: 12,
     },
+    textSpace: {
+        paddingBottom: 40,
+    },
     button: {
         backgroundColor: '#0165fe',
     },
@@ -241,6 +244,9 @@ const styles = StyleSheet.create({
     },
     gaper: {
         gap: 20,
+    },
+    textSize: {
+        fontSize: 28,
     },
     textError: {
         textAlign: 'left',
