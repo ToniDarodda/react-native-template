@@ -4,7 +4,7 @@ import { SafeAreaView, StyleSheet, Text } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { MainRootStackParamList } from '../navigations/main-root-stack';
-import { Button, Spacer, VStack } from '../components';
+import { Button, H1, HStack, Spacer, VStack } from '../components';
 import { Navbar } from '../components/navbar';
 
 type Props = {
@@ -19,10 +19,10 @@ const Home: React.FC<Props> = ({ navigation }) => {
     }
 
     return (
-        <VStack style={styles.container}>
+        <VStack flex={1}>
 
             <SafeAreaView style={styles.safeArea}>
-                <VStack style={styles.content}>
+                <VStack flex={1} padding={12}>
                     <Text>{t('OS')}</Text>
                     <Spacer />
                     <Button text={'Profile'} onPress={navigateProfile} containerStyle={styles.button} />

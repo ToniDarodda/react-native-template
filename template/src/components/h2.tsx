@@ -8,8 +8,8 @@ interface IH2Props extends ICommonComponents<TextStyle> {
     children?: React.ReactNode;
 }
 
-const H2Component: React.FC<IH2Props> = ({ children, style }) => {
-    return <Text style={[composedH2Style, style]}>{children}</Text>;
+const H2Component: React.FC<IH2Props> = ({ children, ...style }) => {
+    return <Text style={[composedH2Style, style as TextStyle]}>{children}</Text>;
 };
 
 export const H2 = React.memo(H2Component);

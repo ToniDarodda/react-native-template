@@ -9,12 +9,12 @@ interface IInputProps extends ICommonComponents<ViewStyle> {
     onChange?: (text: string) => void;
 }
 
-const InputComponent: React.FC<IInputProps> = ({ placeHolder, onChange, style }) => {
+const InputComponent: React.FC<IInputProps> = ({ placeHolder, onChange, ...style }) => {
     return (
         <TextInput
             placeholderTextColor={'gray'}
             placeholder={placeHolder}
-            style={[composedInputStyle, style]}
+            style={[composedInputStyle, style as ViewStyle]}
             onChangeText={onChange}
             testID="input-component"
         />
