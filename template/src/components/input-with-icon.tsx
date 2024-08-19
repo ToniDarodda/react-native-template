@@ -27,7 +27,7 @@ const InputWithIconComponent: React.FC<IInputWithIconProps> = ({
     style,
 }) => {
     return (
-        <HStack style={{ paddingLeft: 12, paddingRight: 12 }}>
+        <HStack style={inputStyle.horizontalPadding}>
             <Icon name={iconName} size={20} color="#c8cdd6" />
             <TextInput
                 placeholderTextColor={'gray'}
@@ -51,6 +51,10 @@ const inputStyle = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: '#e9eaed',
         minHeight: 48,
+    },
+    horizontalPadding: {
+        paddingLeft: 12,
+        paddingRight: 12,
     },
     icon: {
         position: 'absolute',

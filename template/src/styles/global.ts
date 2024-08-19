@@ -4,6 +4,9 @@ const globalStyles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    fullWidth: {
+        width: '100%',
+    },
     alignItemsCenter: {
         alignItems: 'center',
     },

@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { HStack } from './hstack';
 import { Text } from '../styles/text';
 import { ICommonComponents } from '../types/common-component';
+import globalStyles from '../styles/global';
 
 interface ISearchBarProps extends ICommonComponents {
     onSearch?: (val: string) => void;
@@ -21,7 +22,7 @@ const SearchBarComponent: React.FC<ISearchBarProps> = ({ onSearch }) => {
     };
 
     return (
-        <TouchableOpacity onPress={handlePress} style={{ width: '100%' }}>
+        <TouchableOpacity onPress={handlePress} style={globalStyles.fullWidth}>
             <HStack style={searchBarStyle.container}>
                 <TextInput
                     ref={inputRef}
