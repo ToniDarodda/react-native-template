@@ -24,7 +24,7 @@ type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Login'>;
 };
 
-export const LoginScreen: React.FC<Props> = ({ navigation }) => {
+export const Login: React.FC<Props> = ({ navigation }) => {
     const { t } = useTranslation('login');
 
     const { mutate: userLogin, isLoading, isSuccess, isError } = useUserLogin();
@@ -162,6 +162,8 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
         </SafeAreaView>
     );
 };
+
+export const LoginScreen = React.memo(Login);
 
 const styles = StyleSheet.create({
     container: {

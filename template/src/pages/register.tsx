@@ -27,7 +27,7 @@ type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Register'>;
 };
 
-export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
+const Register: React.FC<Props> = ({ navigation }) => {
     const { t } = useTranslation('register');
 
     const {
@@ -48,8 +48,6 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
     const navigateLogin = () => {
         navigation.navigate('Login');
     };
-
-    console.log(errors);
 
     return (
         <SafeAreaView style={styles.overlayContainer}>
@@ -165,6 +163,8 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
         </SafeAreaView>
     );
 };
+
+export const RegisterScreen = React.memo(Register);
 
 const styles = StyleSheet.create({
     container: {

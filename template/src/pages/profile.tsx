@@ -15,7 +15,7 @@ type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Profile'>;
 };
 
-export const ProfileScreen: React.FC<Props> = ({ navigation }) => {
+const Profile: React.FC<Props> = ({ navigation }) => {
     const { t } = useTranslation();
     const dispatch = useDispatch<AppDispatch>();
 
@@ -39,6 +39,7 @@ export const ProfileScreen: React.FC<Props> = ({ navigation }) => {
     );
 };
 
+export const ProfileScreen = React.memo(Profile);
 
 const styles = StyleSheet.create({
     container: {

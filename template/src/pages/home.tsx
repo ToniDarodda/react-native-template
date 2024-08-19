@@ -11,7 +11,7 @@ type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Home'>;
 };
 
-export const HomeScreen: React.FC<Props> = ({ navigation }) => {
+const Home: React.FC<Props> = ({ navigation }) => {
     const { t } = useTranslation();
 
     const navigateProfile = () => {
@@ -33,6 +33,8 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
         </VStack>
     );
 };
+
+export const HomeScreen = React.memo(Home);
 
 const styles = StyleSheet.create({
     container: {

@@ -1,5 +1,5 @@
-import { Role } from "react-native";
 import { Country } from "../enums/country";
+import { Role } from '../enums/role';
 
 export type User = {
     firstName: string;

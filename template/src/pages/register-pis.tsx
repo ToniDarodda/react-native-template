@@ -31,7 +31,7 @@ type Props = {
 
 };
 
-export const RegisterPISScreen: React.FC<Props> = ({ navigation, route }) => {
+const RegisterPISS: React.FC<Props> = ({ navigation, route }) => {
     const { t } = useTranslation('register');
 
     const { firstName, lastName } = route.params;
@@ -213,6 +213,8 @@ export const RegisterPISScreen: React.FC<Props> = ({ navigation, route }) => {
         </SafeAreaView>
     );
 };
+
+export const RegisterPISScreen = React.memo(RegisterPISS);
 
 const styles = StyleSheet.create({
     container: {

@@ -21,7 +21,7 @@ type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Welcome'>;
 };
 
-export const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
+const Welcome: React.FC<Props> = ({ navigation }) => {
     const { t } = useTranslation('welcome');
 
     const handleNavigationRegister = () => {
@@ -69,6 +69,8 @@ export const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
         </SafeAreaView>
     );
 };
+
+export const WelcomeScreen = React.memo(Welcome);
 
 const styles = StyleSheet.create({
     container: {
