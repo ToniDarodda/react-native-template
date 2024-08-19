@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 
 import { ICommonComponents } from '../types/common-component';
 
-interface IHStackProps extends ICommonComponents {
+interface IHStackProps extends ICommonComponents<ViewStyle> {
     children?: React.ReactNode;
 }
 

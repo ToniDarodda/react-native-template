@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, TextStyle } from 'react-native';
 
 import { ICommonComponents } from '../types/common-component';
-import { Text as TextStyle } from '../styles/text';
+import { Text as TStyle } from '../styles/text';
 
-interface IH1Props extends ICommonComponents {
+interface IH1Props extends ICommonComponents<TextStyle> {
     children?: React.ReactNode;
 }
 
@@ -22,4 +22,4 @@ const hstackStyle = StyleSheet.create({
     },
 });
 
-const composedH1Style = StyleSheet.compose(hstackStyle.h1, TextStyle.bold);
+const composedH1Style = StyleSheet.compose(hstackStyle.h1, TStyle.bold);

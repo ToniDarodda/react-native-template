@@ -5,6 +5,7 @@ import {
     StyleSheet,
     TextInput,
     TextInputProps,
+    ViewStyle,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 
@@ -12,7 +13,7 @@ import { ICommonComponents } from '../types/common-component';
 import { Text as TextStyle } from '../styles/text';
 import { HStack } from './hstack';
 
-interface IInputWithIconProps extends ICommonComponents {
+interface IInputWithIconProps extends ICommonComponents<ViewStyle> {
     iconName: string;
     onChange?: (text: string) => void | undefined;
     error?: boolean | undefined;

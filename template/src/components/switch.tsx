@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Switch as RSwitch, StyleSheet } from 'react-native';
+import { Switch as RSwitch, StyleSheet, ViewStyle } from 'react-native';
 
 import { ICommonComponents } from '../types/common-component';
 
-interface ISwitchProps extends ICommonComponents { }
+interface ISwitchProps extends ICommonComponents<ViewStyle> { }
 
 const SwitchComponent: React.FC<ISwitchProps> = ({ style }) => {
     const [isToggle, setIsToggle] = useState<boolean>(false);

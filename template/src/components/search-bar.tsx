@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, TextInput, TouchableOpacity, ViewStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useTranslation } from 'react-i18next';
 
@@ -8,7 +8,7 @@ import { Text } from '../styles/text';
 import { ICommonComponents } from '../types/common-component';
 import globalStyles from '../styles/global';
 
-interface ISearchBarProps extends ICommonComponents {
+interface ISearchBarProps extends ICommonComponents<ViewStyle> {
     onSearch?: (val: string) => void;
 }
 

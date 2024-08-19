@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet, ViewStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -7,7 +7,7 @@ import { HStack } from './hstack';
 import { ICommonComponents } from '../types/common-component';
 import { MainRootStackParamList } from '../navigations/main-root-stack';
 
-interface INavbarProps extends ICommonComponents {
+interface INavbarProps extends ICommonComponents<ViewStyle> {
     navigation: NativeStackNavigationProp<MainRootStackParamList, keyof MainRootStackParamList>;
 }
 

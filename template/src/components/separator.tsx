@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 
 import { ICommonComponents } from '../types/common-component';
 
-interface ISeparatorProps extends ICommonComponents { }
+interface ISeparatorProps extends ICommonComponents<ViewStyle> { }
 
 const SeparatorComponent: React.FC<ISeparatorProps> = ({ style, children }) => {
     return (

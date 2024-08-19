@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewStyle } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import { ICommonComponents } from '../types/common-component';
@@ -8,7 +8,7 @@ import { VStack } from './vstack';
 import { Text } from './text';
 import { Text as TextStyle } from '../styles/text';
 
-interface ISeparatorWithTextProps extends ICommonComponents {
+interface ISeparatorWithTextProps extends ICommonComponents<ViewStyle> {
     text?: string;
 }
 

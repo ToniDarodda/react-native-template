@@ -7,12 +7,13 @@ import {
     View,
     ActivityIndicator,
     TouchableOpacity,
+    ViewStyle,
 } from 'react-native';
 
 import { Text as ITextStyle } from '../styles/text';
 import { ICommonComponents } from '../types/common-component';
 
-interface IButtonProps extends ICommonComponents {
+interface IButtonProps extends ICommonComponents<ViewStyle> {
     text: string;
     isLoading?: boolean | undefined;
     containerStyle?: StyleProp<TextStyle> | undefined;

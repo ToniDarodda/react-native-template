@@ -1,6 +1,6 @@
 import { FlexStyle, StyleProp, TextStyle, TransformsStyle, ViewStyle } from "react-native";
 
-export interface ICommonComponents {
-    style?: StyleProp<ViewStyle | TextStyle | FlexStyle | TransformsStyle>;
+export type ICommonComponents<T> = {
+    style?: StyleProp<T>;
     children?: React.ReactNode;
 }

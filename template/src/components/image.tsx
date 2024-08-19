@@ -5,11 +5,12 @@ import {
     Image as RImage,
     ImageStyle,
     ImageSourcePropType,
+    ViewStyle,
 } from 'react-native';
 
 import { ICommonComponents } from '../types/common-component';
 
-interface IImageProps extends ICommonComponents {
+interface IImageProps extends ICommonComponents<ViewStyle> {
     source: ImageSourcePropType;
 }
 
