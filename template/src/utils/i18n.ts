@@ -6,6 +6,8 @@ import login from '../traduction/login/login.en.json';
 import register from '../traduction/register/register.en.json';
 import component from '../traduction/component.en.json';
 import welcome from '../traduction/welcome/welcome.en.json';
+import profile from '../traduction/profile/profile.en.json';
+import updateProfile from '../traduction/update-profile/en.json';
 
 // Define your resources here
 const resources = {
@@ -14,6 +16,8 @@ const resources = {
     register,
     component,
     welcome,
+    profile,
+    updateProfile,
   },
 } as const;
 
