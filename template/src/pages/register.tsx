@@ -20,14 +20,13 @@ import {
     HStack,
     InputWithIcon,
 } from '../components/index';
-import { Text as TextStyle } from '../styles/text';
 import { RegisterFL } from '../types/forms/register';
 
 type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Register'>;
 };
 
-export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
+const Register: React.FC<Props> = ({ navigation }) => {
     const { t } = useTranslation('register');
 
     const {
@@ -49,23 +48,31 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
         navigation.navigate('Login');
     };
 
-    console.log(errors);
-
     return (
         <SafeAreaView style={styles.overlayContainer}>
-            <VStack style={styles.inner}>
+            <VStack
+                flex={1}
+                padding={12}
+                width={'100%'}
+                justifyContent={'center'}
+                alignItems={'center'}
+                gap={12}>
                 <KeyboardAvoidingView
                     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                     style={styles.container}>
-                    <VStack style={[styles.inner]}>
-                        <VStack style={{ paddingBottom: 40 }}>
-                            <H1 style={TextStyle.blue}>{t('register_h1_text')}</H1>
-                            <Text style={TextStyle.blue}>
-                                {t('register_text_information')}
-                            </Text>
+                    <VStack
+                        flex={1}
+                        padding={12}
+                        width={'100%'}
+                        justifyContent={'center'}
+                        alignItems={'center'}
+                        gap={12}>
+                        <VStack padding={40}>
+                            <H1 color={'#263759'}>{t('register_h1_text')}</H1>
+                            <Text color={'#263759'}>{t('register_text_information')}</Text>
                         </VStack>
 
-                        <VStack style={styles.gaper}>
+                        <VStack gap={20}>
                             <Controller
                                 control={control}
                                 rules={{
@@ -86,7 +93,12 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
                                 name="firstName"
                             />
                             {errors.firstName && (
-                                <Text style={[TextStyle.small, styles.textError]}>
+                                <Text
+                                    fontSize={13}
+                                    fontFamily={'OpenSans-Medium'}
+                                    textAlign={'left'}
+                                    width={'100%'}
+                                    paddingHorizontal={30}>
                                     {errors.firstName.message}
                                 </Text>
                             )}
@@ -111,7 +123,12 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
                                 name="lastName"
                             />
                             {errors.lastName && (
-                                <Text style={[TextStyle.small, styles.textError]}>
+                                <Text
+                                    fontSize={13}
+                                    fontFamily={'OpenSans-Medium'}
+                                    textAlign={'left'}
+                                    width={'100%'}
+                                    paddingHorizontal={30}>
                                     {errors.lastName.message}
                                 </Text>
                             )}
@@ -119,13 +136,19 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
 
                         <Spacer />
 
-                        <Text style={[TextStyle.blue, TextStyle.small]}>
+                        <Text
+                            color={'#263759'}
+                            fontSize={13}
+                            fontFamily={'OpenSans-Medium'}>
                             {
                                 t('register_text_sign_in_up_information').split(
                                     'Terms & Conditions',
                                 )[0]
                             }
-                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
+                            <Text
+                                color={'#0165fe'}
+                                fontSize={13}
+                                fontFamily={'OpenSans-Bold'}>
                                 Terms & Conditions
                             </Text>
                             {
@@ -133,7 +156,10 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
                                     .split('Terms & Conditions')[1]
                                     .split('Privacy Policy')[0]
                             }
-                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
+                            <Text
+                                color={'#0165fe'}
+                                fontSize={13}
+                                fontFamily={'OpenSans-Bold'}>
                                 Privacy Policy
                             </Text>
                             {
@@ -149,12 +175,17 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
                         />
 
                         <HStack>
-                            <Text style={[TextStyle.blue, TextStyle.small]}>
+                            <Text
+                                color={'#263759'}
+                                fontSize={13}
+                                fontFamily={'OpenSans-Medium'}>
                                 {t('register_text_already_joined')}
                             </Text>
                             <Pressable onPress={navigateLogin}>
                                 <Text
-                                    style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
+                                    color={'#263759'}
+                                    fontSize={13}
+                                    fontFamily={'OpenSans-Bold'}>
                                     {t('register_redirect_login')}
                                 </Text>
                             </Pressable>
@@ -166,39 +197,18 @@ export const RegisterScreen: React.FC<Props> = ({ navigation }) => {
     );
 };
 
+export const RegisterScreen = React.memo(Register);
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
     },
-    backgroundImage: {
-        width: 300,
-        height: 250,
-    },
     overlayContainer: {
         flex: 1,
         backgroundColor: 'white',
     },
-    inner: {
-        flex: 1,
-        padding: 12,
-        width: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: 12,
-    },
     button: {
         backgroundColor: '#0165fe',
-    },
-    contentHidden: {
-        opacity: 0.3,
-    },
-    gaper: {
-        gap: 20,
-    },
-    textError: {
-        textAlign: 'left',
-        width: '100%',
-        paddingHorizontal: 30,
     },
 });

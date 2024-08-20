@@ -1,15 +1,15 @@
 import React from "react";
-import { StyleSheet, View } from "react-native"
+import { StyleSheet, View, ViewStyle } from "react-native"
 
-import { ICommonComponents } from "../types/common-component";
+import { IStyle } from "../types/common-component";
 
-interface IVStackProps extends ICommonComponents {
+interface IVStackProps extends IStyle<ViewStyle> {
     children?: React.ReactNode;
 }
 
-const VStackComponent: React.FC<IVStackProps> = ({ children, style }) => {
+const VStackComponent: React.FC<IVStackProps> = ({ children, ...style }) => {
     return (
-        <View style={[vstackStyle.container, style]} testID="vstack-container">
+        <View style={[vstackStyle.container, style as ViewStyle]} testID="vstack-container">
             {children}
         </View>
     )

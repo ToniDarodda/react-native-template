@@ -1,15 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, TextStyle } from 'react-native';
 
-import { ICommonComponents } from '../types/common-component';
-import { Text as TextStyle } from '../styles/text';
+import { IStyle } from '../types/common-component';
+import { Text as TStyle } from '../styles/text';
 
-interface IH2Props extends ICommonComponents {
+interface IH2Props extends IStyle<TextStyle> {
     children?: React.ReactNode;
 }
 
-const H2Component: React.FC<IH2Props> = ({ children, style }) => {
-    return <Text style={[composedH2Style, style]}>{children}</Text>;
+const H2Component: React.FC<IH2Props> = ({ children, ...style }) => {
+    return <Text style={[composedH2Style, style as TextStyle]}>{children}</Text>;
 };
 
 export const H2 = React.memo(H2Component);
@@ -21,4 +21,4 @@ const hstackStyle = StyleSheet.create({
     },
 });
 
-const composedH2Style = StyleSheet.compose(hstackStyle.h2, TextStyle.bold);
+const composedH2Style = StyleSheet.compose(hstackStyle.h2, TStyle.bold);

@@ -1,18 +1,18 @@
 import React from 'react';
 
 import {
-    KeyboardTypeOptions,
     StyleSheet,
     TextInput,
     TextInputProps,
+    ViewStyle,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 
-import { ICommonComponents } from '../types/common-component';
+import { IStyle } from '../types/common-component';
 import { Text as TextStyle } from '../styles/text';
 import { HStack } from './hstack';
 
-interface IInputWithIconProps extends ICommonComponents {
+interface IInputWithIconProps extends IStyle<ViewStyle> {
     iconName: string;
     onChange?: (text: string) => void | undefined;
     error?: boolean | undefined;
@@ -24,14 +24,14 @@ const InputWithIconComponent: React.FC<IInputWithIconProps> = ({
     textInputProps,
     error,
     onChange,
-    style,
+    ...style
 }) => {
     return (
-        <HStack style={{ paddingLeft: 12, paddingRight: 12 }}>
+        <HStack paddingLeft={12} paddingRight={12}>
             <Icon name={iconName} size={20} color="#c8cdd6" />
             <TextInput
                 placeholderTextColor={'gray'}
-                style={[composedInputStyle, error && inputStyle.error, style]}
+                style={[composedInputStyle, error && inputStyle.error, style as ViewStyle]}
                 onChangeText={onChange}
                 {...textInputProps}
                 testID="text-input"
@@ -51,6 +51,10 @@ const inputStyle = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: '#e9eaed',
         minHeight: 48,
+    },
+    horizontalPadding: {
+        paddingLeft: 12,
+        paddingRight: 12,
     },
     icon: {
         position: 'absolute',

@@ -1,13 +1,13 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 
-import { ICommonComponents } from '../types/common-component';
+import { IStyle } from '../types/common-component';
 
-interface ISeparatorProps extends ICommonComponents { }
+interface ISeparatorProps extends IStyle<ViewStyle> { }
 
-const SeparatorComponent: React.FC<ISeparatorProps> = ({ style, children }) => {
+const SeparatorComponent: React.FC<ISeparatorProps> = ({ children, ...style }) => {
     return (
-        <View style={[separatorStyle.separator, style]} testID="separator">
+        <View style={[separatorStyle.separator, style as ViewStyle]} testID="separator">
             {children}
         </View>
     );

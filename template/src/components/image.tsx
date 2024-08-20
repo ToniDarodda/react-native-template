@@ -5,17 +5,18 @@ import {
     Image as RImage,
     ImageStyle,
     ImageSourcePropType,
+    ViewStyle,
 } from 'react-native';
 
-import { ICommonComponents } from '../types/common-component';
+import { IStyle } from '../types/common-component';
 
-interface IImageProps extends ICommonComponents {
+interface IImageProps extends IStyle<ViewStyle & ImageStyle> {
     source: ImageSourcePropType;
 }
 
-const ImageComponent: React.FC<IImageProps> = ({ source, style }) => {
+const ImageComponent: React.FC<IImageProps> = ({ source, ...style }) => {
     return (
-        <View style={[style]}>
+        <View style={[style as ViewStyle]}>
             <RImage
                 source={source}
                 resizeMode="cover"

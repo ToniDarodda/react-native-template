@@ -1,20 +1,20 @@
 import React from 'react';
-import { StyleSheet, TextInput } from 'react-native';
+import { StyleSheet, TextInput, ViewStyle } from 'react-native';
 
-import { ICommonComponents } from '../types/common-component';
+import { IStyle } from '../types/common-component';
 import { Text as TextStyle } from '../styles/text';
 
-interface IInputProps extends ICommonComponents {
+interface IInputProps extends IStyle<ViewStyle> {
     placeHolder?: string;
     onChange?: (text: string) => void;
 }
 
-const InputComponent: React.FC<IInputProps> = ({ placeHolder, onChange, style }) => {
+const InputComponent: React.FC<IInputProps> = ({ placeHolder, onChange, ...style }) => {
     return (
         <TextInput
             placeholderTextColor={'gray'}
             placeholder={placeHolder}
-            style={[composedInputStyle, style]}
+            style={[composedInputStyle, style as ViewStyle]}
             onChangeText={onChange}
             testID="input-component"
         />

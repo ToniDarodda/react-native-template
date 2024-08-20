@@ -37,5 +37,5 @@ export const Text = StyleSheet.create({
     small: {
         fontSize: 13,
         fontFamily: 'OpenSans-Medium',
-    }
+    },
 })

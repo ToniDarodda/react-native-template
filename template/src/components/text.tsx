@@ -1,16 +1,16 @@
 import React from "react";
-import { StyleSheet, Text as RText } from "react-native"
+import { StyleSheet, Text as RText, TextStyle } from "react-native"
 
-import { ICommonComponents } from "../types/common-component";
-import { Text as TextStyle } from '../styles/text';
+import { IStyle } from "../types/common-component";
+import { Text as TStyle } from '../styles/text';
 
-interface ITextProps extends ICommonComponents {
+interface ITextProps extends IStyle<TextStyle> {
     children?: React.ReactNode;
 }
 
-const TextComponent: React.FC<ITextProps> = ({ children, style }) => {
+const TextComponent: React.FC<ITextProps> = ({ children, ...style }) => {
     return (
-        <RText style={[composedH2Style, style]}>
+        <RText style={[composedH2Style, style as TextStyle]}>
             {children}
         </RText>
     )
@@ -26,4 +26,4 @@ const hstackStyle = StyleSheet.create({
     }
 })
 
-const composedH2Style = StyleSheet.compose(hstackStyle.text, TextStyle.regular);
+const composedH2Style = StyleSheet.compose(hstackStyle.text, TStyle.regular);

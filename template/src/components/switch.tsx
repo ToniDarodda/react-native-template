@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Switch as RSwitch, StyleSheet } from 'react-native';
+import { Switch as RSwitch, StyleSheet, ViewStyle } from 'react-native';
 
-import { ICommonComponents } from '../types/common-component';
+import { IStyle } from '../types/common-component';
 
-interface ISwitchProps extends ICommonComponents { }
+interface ISwitchProps extends IStyle<ViewStyle> { }
 
-const SwitchComponent: React.FC<ISwitchProps> = ({ style }) => {
+const SwitchComponent: React.FC<ISwitchProps> = ({ ...style }) => {
     const [isToggle, setIsToggle] = useState<boolean>(false);
 
     const toggleSwitch = (value: boolean) => {
@@ -14,7 +14,7 @@ const SwitchComponent: React.FC<ISwitchProps> = ({ style }) => {
 
     return (
         <RSwitch
-            style={[switchStyle.switch, style]}
+            style={[switchStyle.switch, style as ViewStyle]}
             onValueChange={toggleSwitch}
             value={isToggle}
             trackColor={{ false: '#767577', true: '#8733d0' }}

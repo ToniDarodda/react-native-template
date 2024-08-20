@@ -11,21 +11,24 @@ type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'Home'>;
 };
 
-export const HomeScreen: React.FC<Props> = ({ navigation }) => {
+const Home: React.FC<Props> = ({ navigation }) => {
     const { t } = useTranslation();
 
     const navigateProfile = () => {
         navigation.navigate('Profile');
-    }
+    };
 
     return (
-        <VStack style={styles.container}>
-
+        <VStack flex={1}>
             <SafeAreaView style={styles.safeArea}>
-                <VStack style={styles.content}>
+                <VStack flex={1} padding={12}>
                     <Text>{t('OS')}</Text>
                     <Spacer />
-                    <Button text={'Profile'} onPress={navigateProfile} containerStyle={styles.button} />
+                    <Button
+                        text={'Profile'}
+                        onPress={navigateProfile}
+                        containerStyle={styles.button}
+                    />
                 </VStack>
             </SafeAreaView>
 
@@ -34,20 +37,13 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+export const HomeScreen = React.memo(Home);
 
-    },
+const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
         marginBottom: 80,
         width: '100%',
-    },
-    content: {
-        flex: 1,
-        padding: 12,
-
     },
     button: {
         backgroundColor: '#0165fe',
