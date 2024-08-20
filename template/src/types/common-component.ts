@@ -6,7 +6,7 @@ export type ICommonComponents<T> = {
 }
 
 type CommonProps<T> = {
-    [K in keyof T]?: number | string;
+    [K in keyof T]?: T[K];
 };
 
 
