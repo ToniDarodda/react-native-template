@@ -76,9 +76,6 @@ const Profile: React.FC<Props> = ({ navigation }) => {
                             text={'Edit profile'}
                             containerStyle={{
                                 backgroundColor: 'black',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                textAlign: 'center',
                                 height: 40,
                                 padding: 0,
                                 width: 120,
@@ -99,7 +96,6 @@ const Profile: React.FC<Props> = ({ navigation }) => {
                         borderWidth={1}
                         borderColor={'#F3F3F3'}
                         alignItems='flex-start'
-                        justifyContent='space-around'
                         padding={24}
                         borderRadius={12}
                         gap={20}

@@ -53,9 +53,6 @@ const Register: React.FC<Props> = ({ navigation }) => {
             <VStack
                 flex={1}
                 padding={12}
-                width={'100%'}
-                justifyContent={'center'}
-                alignItems={'center'}
                 gap={12}>
                 <KeyboardAvoidingView
                     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -63,11 +60,8 @@ const Register: React.FC<Props> = ({ navigation }) => {
                     <VStack
                         flex={1}
                         padding={12}
-                        width={'100%'}
-                        justifyContent={'center'}
-                        alignItems={'center'}
                         gap={12}>
-                        <VStack padding={40}>
+                        <VStack >
                             <H1 color={'#263759'}>{t('register_h1_text')}</H1>
                             <Text color={'#263759'}>{t('register_text_information')}</Text>
                         </VStack>

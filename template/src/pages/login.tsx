@@ -74,16 +74,10 @@ export const Login: React.FC<Props> = ({ navigation }) => {
             <VStack
                 flex={1}
                 padding={12}
-                width={'100%'}
-                justifyContent={'center'}
-                alignItems={'center'}
                 gap={12}>
                 <VStack
                     flex={1}
                     padding={12}
-                    width={'100%'}
-                    justifyContent={'center'}
-                    alignItems={'center'}
                     gap={12}>
                     <H1 color={'#263759'}>{t('login_h1_text')}</H1>
                     <Text color={'#263759'} paddingBottom={40}>
