@@ -17,7 +17,6 @@ const SwitchComponent: React.FC<ISwitchProps> = ({ ...style }) => {
             style={[switchStyle.switch, style as ViewStyle]}
             onValueChange={toggleSwitch}
             value={isToggle}
-            trackColor={{ false: '#767577', true: '#8733d0' }}
             thumbColor={isToggle ? 'white' : '#f4f3f4'}
         />
     );

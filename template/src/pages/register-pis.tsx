@@ -91,9 +91,6 @@ const RegisterPISS: React.FC<Props> = ({ navigation, route }) => {
             <VStack
                 flex={1}
                 padding={12}
-                width={'100%'}
-                justifyContent={'center'}
-                alignItems={'center'}
                 gap={12}>
                 <KeyboardAvoidingView
                     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -101,12 +98,9 @@ const RegisterPISS: React.FC<Props> = ({ navigation, route }) => {
                     <VStack
                         flex={1}
                         padding={12}
-                        width={'100%'}
-                        justifyContent={'center'}
-                        alignItems={'center'}
                         gap={12}>
                         <VStack paddingBottom={40}>
-                            <H1 color={'#263759'} fontSize={28}>
+                            <H1 color={'#263759'} fontSize={32}>
                                 {t('register_pis_h1_information')}
                             </H1>
                             <Text color={'gray'}>{t('register_pis_text_information')}</Text>

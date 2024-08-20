@@ -29,6 +29,10 @@ Created using the default components provided in the project.
 
 <img src="./read-me-assets/register.png" alt="register Screen" width="300" height="auto">
 
+### Profile Screen
+
+<img src="./read-me-assets/register.png" alt="register Screen" width="300" height="auto">
+
 
 ## Features
 

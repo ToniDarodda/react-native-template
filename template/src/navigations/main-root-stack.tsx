@@ -10,6 +10,7 @@ import { isAuthenticated } from '../stores/selectors/user';
 import { registerPIS } from '../types/navigations/register';
 import { RegisterPISScreen } from '../pages/register-pis';
 import { WelcomeScreen } from '../pages/welcome';
+import { UpdateProfileScreen } from '../pages/update-profile';
 
 export type MainRootStackParamList = {
   Welcome: undefined;
@@ -23,6 +24,7 @@ export type MainRootStackParamList = {
 
   Home: undefined;
   Profile: undefined;
+  UpdateProfile: undefined;
 };
 
 const Stack = createNativeStackNavigator<MainRootStackParamList>();
@@ -36,8 +38,7 @@ export const MainRootStack = () => {
       screenOptions={{
         headerShown: false,
         animation: 'none',
-      }}
-    >
+      }}>
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
 
       <Stack.Screen name="Register" component={RegisterScreen} />
@@ -47,6 +48,16 @@ export const MainRootStack = () => {
 
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen
+        name="UpdateProfile"
+        component={UpdateProfileScreen}
+        options={{
+          presentation: 'modal',
+          headerShown: false,
+          contentStyle: { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
+          animation: 'fade_from_bottom',
+        }}
+      />
     </Stack.Navigator>
   );
 };
