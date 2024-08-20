@@ -8,7 +8,7 @@ import {
     ViewStyle,
 } from 'react-native';
 
-import { ICommonComponents, IStyle } from '../types/common-component';
+import { IStyle } from '../types/common-component';
 
 interface IImageProps extends IStyle<ViewStyle & ImageStyle> {
     source: ImageSourcePropType;

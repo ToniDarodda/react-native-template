@@ -33,7 +33,7 @@ const NavBarComponent: React.FC<INavbarProps> = ({ navigation, ...style }) => {
             width={'100%'}
             justifyContent={'space-around'}
             padding={16}
-            alignItems={'flex-start'}>
+            alignItems={'flex-start'} {...style}>
             <Pressable onPress={() => handleNavigate('Home')}>
                 <Icon name={'home'} size={24} color="#c8cdd6" />
             </Pressable>

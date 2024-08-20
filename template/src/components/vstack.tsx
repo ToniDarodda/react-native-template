@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native"
 
-import { ICommonComponents, IStyle } from "../types/common-component";
+import { IStyle } from "../types/common-component";
 
 interface IVStackProps extends IStyle<ViewStyle> {
     children?: React.ReactNode;

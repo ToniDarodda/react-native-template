@@ -12,7 +12,7 @@ interface ISearchBarProps extends IStyle<ViewStyle> {
     onSearch?: (val: string) => void;
 }
 
-const SearchBarComponent: React.FC<ISearchBarProps> = ({ onSearch }) => {
+const SearchBarComponent: React.FC<ISearchBarProps> = ({ onSearch, children, ...style }) => {
     const { t } = useTranslation('component');
 
     const inputRef = useRef<TextInput>(null);
@@ -30,7 +30,7 @@ const SearchBarComponent: React.FC<ISearchBarProps> = ({ onSearch }) => {
                 padding={12}
                 paddingLeft={44}
                 justifyContent={'flex-start'}
-                backgroundColor={'#f2f2f2'}>
+                backgroundColor={'#f2f2f2'} {...style}>
                 <TextInput
                     ref={inputRef}
                     placeholder={t('search_bar_placeholder')}

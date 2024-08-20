@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, TextStyle } from 'react-native';
 
-import { ICommonComponents } from '../types/common-component';
+import { IStyle } from '../types/common-component';
 import { Text as TStyle } from '../styles/text';
 
-interface IH2Props extends ICommonComponents<TextStyle> {
+interface IH2Props extends IStyle<TextStyle> {
     children?: React.ReactNode;
 }
 

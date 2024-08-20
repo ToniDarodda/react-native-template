@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import { Text as ITextStyle } from '../styles/text';
-import { ICommonComponents, IStyle } from '../types/common-component';
+import { IStyle } from '../types/common-component';
 
 interface IButtonProps extends IStyle<ViewStyle> {
     text: string;

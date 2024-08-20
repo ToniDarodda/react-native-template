@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Switch as RSwitch, StyleSheet, ViewStyle } from 'react-native';
 
-import { ICommonComponents, IStyle } from '../types/common-component';
+import { IStyle } from '../types/common-component';
 
 interface ISwitchProps extends IStyle<ViewStyle> { }
 

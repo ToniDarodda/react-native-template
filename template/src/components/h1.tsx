@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TextStyle } from 'react-native';
 
-import { ICommonComponents, IStyle } from '../types/common-component';
+import { IStyle } from '../types/common-component';
 import { Text as TStyle } from '../styles/text';
 
 interface IH1Props extends IStyle<TextStyle> {

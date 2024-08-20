@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, TextInput, ViewStyle } from 'react-native';
 
-import { ICommonComponents } from '../types/common-component';
+import { IStyle } from '../types/common-component';
 import { Text as TextStyle } from '../styles/text';
 
-interface IInputProps extends ICommonComponents<ViewStyle> {
+interface IInputProps extends IStyle<ViewStyle> {
     placeHolder?: string;
     onChange?: (text: string) => void;
 }
