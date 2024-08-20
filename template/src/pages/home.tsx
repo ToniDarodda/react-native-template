@@ -4,7 +4,7 @@ import { SafeAreaView, StyleSheet, Text } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { MainRootStackParamList } from '../navigations/main-root-stack';
-import { Button, H1, HStack, Spacer, VStack } from '../components';
+import { Button, Spacer, VStack } from '../components';
 import { Navbar } from '../components/navbar';
 
 type Props = {
@@ -16,16 +16,19 @@ const Home: React.FC<Props> = ({ navigation }) => {
 
     const navigateProfile = () => {
         navigation.navigate('Profile');
-    }
+    };
 
     return (
         <VStack flex={1}>
-
             <SafeAreaView style={styles.safeArea}>
                 <VStack flex={1} padding={12}>
                     <Text>{t('OS')}</Text>
                     <Spacer />
-                    <Button text={'Profile'} onPress={navigateProfile} containerStyle={styles.button} />
+                    <Button
+                        text={'Profile'}
+                        onPress={navigateProfile}
+                        containerStyle={styles.button}
+                    />
                 </VStack>
             </SafeAreaView>
 
@@ -37,19 +40,10 @@ const Home: React.FC<Props> = ({ navigation }) => {
 export const HomeScreen = React.memo(Home);
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-
-    },
     safeArea: {
         flex: 1,
         marginBottom: 80,
         width: '100%',
-    },
-    content: {
-        flex: 1,
-        padding: 12,
-
     },
     button: {
         backgroundColor: '#0165fe',

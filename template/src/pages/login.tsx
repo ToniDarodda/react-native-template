@@ -15,8 +15,6 @@ import {
     HStack,
     InputWithIcon,
 } from '../components/index';
-import globalStyles from '../styles/global';
-import { Text as TextStyle } from '../styles/text';
 import { useUserLogin } from '../queries/user';
 import { FormLogin } from '../types/forms/login';
 
@@ -35,15 +33,14 @@ export const Login: React.FC<Props> = ({ navigation }) => {
         formState: { errors },
     } = useForm<FormLogin>({
         defaultValues: {
-            email: "",
-            password: "",
+            email: '',
+            password: '',
         },
-    })
+    });
 
     const onSubmit = (data: FormLogin) => {
         userLogin(data);
-    }
-
+    };
 
     const navigateRegister = () => {
         navigation.navigate('Register');
@@ -51,7 +48,7 @@ export const Login: React.FC<Props> = ({ navigation }) => {
 
     useEffect(() => {
         if (isSuccess) navigation.navigate('Home');
-    }, [isSuccess])
+    }, [isSuccess]);
 
     useEffect(() => {
         if (isError) {
@@ -66,21 +63,32 @@ export const Login: React.FC<Props> = ({ navigation }) => {
                 textColor: 'white',
                 containerStyle: {
                     width: '100%',
-                    height: 40
-                }
+                    height: 40,
+                },
             });
         }
-    }, [isError])
+    }, [isError]);
 
     return (
         <SafeAreaView style={styles.overlayContainer}>
-            <VStack style={styles.inner}>
-
-
-                <VStack style={[styles.inner]}>
-
-                    <H1 style={TextStyle.blue}>{t('login_h1_text')}</H1>
-                    <Text style={[TextStyle.blue, styles.textSpace]}>{t('login_text_information')}</Text>
+            <VStack
+                flex={1}
+                padding={12}
+                width={'100%'}
+                justifyContent={'center'}
+                alignItems={'center'}
+                gap={12}>
+                <VStack
+                    flex={1}
+                    padding={12}
+                    width={'100%'}
+                    justifyContent={'center'}
+                    alignItems={'center'}
+                    gap={12}>
+                    <H1 color={'#263759'}>{t('login_h1_text')}</H1>
+                    <Text color={'#263759'} paddingBottom={40}>
+                        {t('login_text_information')}
+                    </Text>
 
                     <Controller
                         control={control}
@@ -93,7 +101,7 @@ export const Login: React.FC<Props> = ({ navigation }) => {
                         }}
                         render={({ field: { onChange, onBlur, value } }) => (
                             <InputWithIcon
-                                iconName='email'
+                                iconName="email"
                                 onChange={onChange}
                                 textInputProps={{
                                     onBlur: onBlur,
@@ -107,7 +115,6 @@ export const Login: React.FC<Props> = ({ navigation }) => {
                         name="email"
                     />
 
-
                     <Controller
                         control={control}
                         rules={{
@@ -119,7 +126,7 @@ export const Login: React.FC<Props> = ({ navigation }) => {
                         }}
                         render={({ field: { onChange, onBlur, value } }) => (
                             <InputWithIcon
-                                iconName='lock'
+                                iconName="lock"
                                 onChange={onChange}
                                 textInputProps={{
                                     onBlur: onBlur,
@@ -133,30 +140,38 @@ export const Login: React.FC<Props> = ({ navigation }) => {
                         name="password"
                     />
 
-
-                    <VStack style={globalStyles.alignItemsEnd}>
-                        <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
+                    <VStack alignItems={'flex-end'}>
+                        <Text color={'#0165fe'} fontFamily={'OpenSans-Bold'} fontSize={13}>
                             {t('login_forgot_password')}
                         </Text>
                     </VStack>
 
                     <Spacer />
 
-                    <Button containerStyle={styles.button} text={t('login_button')} onPress={handleSubmit(onSubmit)} isLoading={isLoading} />
+                    <Button
+                        containerStyle={styles.button}
+                        text={t('login_button')}
+                        onPress={handleSubmit(onSubmit)}
+                        isLoading={isLoading}
+                    />
 
                     <HStack>
-
-                        <Text style={[TextStyle.blue, TextStyle.small]}>
+                        <Text
+                            color={'#263759'}
+                            fontSize={13}
+                            fontFamily={'OpenSans-Medium'}>
                             {t('login_new_to_app')}
                         </Text>
 
                         <Pressable onPress={navigateRegister}>
-                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>
+                            <Text
+                                color={'#0165fe'}
+                                fontFamily={'OpenSans-Bold'}
+                                fontSize={13}>
                                 {t('login_navigate_to_register')}
                             </Text>
                         </Pressable>
                     </HStack>
-
                 </VStack>
             </VStack>
         </SafeAreaView>
@@ -169,31 +184,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    backgroundImage: {
-        width: 300,
-        height: 250,
-    },
     overlayContainer: {
         flex: 1,
         backgroundColor: 'white',
     },
-    textSpace: {
-        paddingBottom: 40,
-    },
-    inner: {
-        flex: 1,
-        padding: 12,
-        width: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: 12,
-    },
     button: {
         backgroundColor: '#0165fe',
-    },
-    textError: {
-        textAlign: 'left',
-        width: '100%',
-        paddingHorizontal: 30
     },
 });

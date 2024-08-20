@@ -7,7 +7,7 @@ import {
     SafeAreaView,
     StyleSheet,
 } from 'react-native';
-import { useForm, Controller } from "react-hook-form"
+import { useForm, Controller } from 'react-hook-form';
 import Toast from 'react-native-root-toast';
 import { RouteProp } from '@react-navigation/native';
 
@@ -20,7 +20,6 @@ import {
     Spacer,
     InputWithIcon,
 } from '../components/index';
-import { Text as TextStyle } from '../styles/text';
 import { RegisterP } from '../types/forms/register';
 import { useUserCreate } from '../queries/user';
 import { Country } from '../enums/country';
@@ -28,14 +27,12 @@ import { Country } from '../enums/country';
 type Props = {
     navigation: NativeStackNavigationProp<MainRootStackParamList, 'RegisterPIS'>;
     route: RouteProp<MainRootStackParamList, 'RegisterPIS'>;
-
 };
 
 const RegisterPISS: React.FC<Props> = ({ navigation, route }) => {
     const { t } = useTranslation('register');
 
     const { firstName, lastName } = route.params;
-
 
     const { mutate: createUser, isLoading, isError, isSuccess } = useUserCreate();
 
@@ -46,18 +43,21 @@ const RegisterPISS: React.FC<Props> = ({ navigation, route }) => {
         watch,
     } = useForm<RegisterP>({
         defaultValues: {
-            email: "",
-            password: "",
-            validatePassword: "",
+            email: '',
+            password: '',
+            validatePassword: '',
         },
     });
 
     const onSubmit = (data: RegisterP) => {
         createUser({
-            ...data, firstName, lastName, country: Country.FRANCE, phoneNumber: '',
+            ...data,
+            firstName,
+            lastName,
+            country: Country.FRANCE,
+            phoneNumber: '',
         });
-    }
-
+    };
 
     const password = watch('password');
 
@@ -65,7 +65,7 @@ const RegisterPISS: React.FC<Props> = ({ navigation, route }) => {
         if (isSuccess) {
             navigation.navigate('Home');
         }
-    }, [isSuccess])
+    }, [isSuccess]);
 
     useEffect(() => {
         if (isError) {
@@ -80,28 +80,39 @@ const RegisterPISS: React.FC<Props> = ({ navigation, route }) => {
                 textColor: 'white',
                 containerStyle: {
                     width: '100%',
-                    height: 40
-                }
+                    height: 40,
+                },
             });
         }
-    }, [isError])
+    }, [isError]);
 
     return (
         <SafeAreaView style={styles.overlayContainer}>
-            <VStack style={styles.inner}>
+            <VStack
+                flex={1}
+                padding={12}
+                width={'100%'}
+                justifyContent={'center'}
+                alignItems={'center'}
+                gap={12}>
                 <KeyboardAvoidingView
                     behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                    style={styles.container}
-                >
-
-                    <VStack style={[styles.inner]}>
-
-                        <VStack style={styles.textSpace}>
-                            <H1 style={[TextStyle.blue, styles.textSize]}>{t('register_pis_h1_information')}</H1>
-                            <Text style={TextStyle.darkGray}>{t('register_pis_text_information')}</Text>
+                    style={styles.container}>
+                    <VStack
+                        flex={1}
+                        padding={12}
+                        width={'100%'}
+                        justifyContent={'center'}
+                        alignItems={'center'}
+                        gap={12}>
+                        <VStack paddingBottom={40}>
+                            <H1 color={'#263759'} fontSize={28}>
+                                {t('register_pis_h1_information')}
+                            </H1>
+                            <Text color={'gray'}>{t('register_pis_text_information')}</Text>
                         </VStack>
 
-                        <VStack style={styles.gaper}>
+                        <VStack gap={20}>
                             <Controller
                                 control={control}
                                 rules={{
@@ -113,7 +124,7 @@ const RegisterPISS: React.FC<Props> = ({ navigation, route }) => {
                                 }}
                                 render={({ field: { onChange, onBlur, value } }) => (
                                     <InputWithIcon
-                                        iconName='email'
+                                        iconName="email"
                                         onChange={onChange}
                                         textInputProps={{
                                             onBlur: onBlur,
@@ -126,7 +137,16 @@ const RegisterPISS: React.FC<Props> = ({ navigation, route }) => {
                                 )}
                                 name="email"
                             />
-                            {errors.email && <Text style={[TextStyle.small, styles.textError]}>{errors.email.message}</Text>}
+                            {errors.email && (
+                                <Text
+                                    fontSize={13}
+                                    fontFamily={'OpenSans-Medium'}
+                                    textAlign={'left'}
+                                    width={'100%'}
+                                    paddingHorizontal={30}>
+                                    {errors.email.message}
+                                </Text>
+                            )}
 
                             <Controller
                                 control={control}
@@ -139,7 +159,7 @@ const RegisterPISS: React.FC<Props> = ({ navigation, route }) => {
                                 }}
                                 render={({ field: { onChange, onBlur, value } }) => (
                                     <InputWithIcon
-                                        iconName='fingerprint'
+                                        iconName="fingerprint"
                                         onChange={onChange}
                                         textInputProps={{
                                             onBlur: onBlur,
@@ -152,7 +172,16 @@ const RegisterPISS: React.FC<Props> = ({ navigation, route }) => {
                                 )}
                                 name="password"
                             />
-                            {errors.password && <Text style={[TextStyle.small, styles.textError]}>{errors.password.message}</Text>}
+                            {errors.password && (
+                                <Text
+                                    fontSize={13}
+                                    fontFamily={'OpenSans-Medium'}
+                                    textAlign={'left'}
+                                    width={'100%'}
+                                    paddingHorizontal={30}>
+                                    {errors.password.message}
+                                </Text>
+                            )}
 
                             <Controller
                                 control={control}
@@ -163,12 +192,14 @@ const RegisterPISS: React.FC<Props> = ({ navigation, route }) => {
                                 }}
                                 render={({ field: { onChange, onBlur, value } }) => (
                                     <InputWithIcon
-                                        iconName='fingerprint'
+                                        iconName="fingerprint"
                                         onChange={onChange}
                                         textInputProps={{
                                             onBlur: onBlur,
                                             value: value,
-                                            placeholder: t('register_input_password_again_placeholder'),
+                                            placeholder: t(
+                                                'register_input_password_again_placeholder',
+                                            ),
                                             secureTextEntry: true,
                                         }}
                                         error={!!errors.validatePassword}
@@ -176,24 +207,46 @@ const RegisterPISS: React.FC<Props> = ({ navigation, route }) => {
                                 )}
                                 name="validatePassword"
                             />
-                            {errors.validatePassword && <Text style={[TextStyle.small, styles.textError]}>{errors.validatePassword.message}</Text>}
+                            {errors.validatePassword && (
+                                <Text
+                                    fontSize={13}
+                                    fontFamily={'OpenSans-Medium'}
+                                    textAlign={'left'}
+                                    width={'100%'}
+                                    paddingHorizontal={30}>
+                                    {errors.validatePassword.message}
+                                </Text>
+                            )}
                         </VStack>
 
                         <Spacer />
 
-                        <Text style={[TextStyle.blue, TextStyle.small]}>
+                        <Text
+                            color={'#263759'}
+                            fontSize={13}
+                            fontFamily={'OpenSans-Medium'}>
                             {
                                 t('register_text_sign_in_up_information').split(
                                     'Terms & Conditions',
                                 )[0]
                             }
-                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>Terms & Conditions</Text>
+                            <Text
+                                color={'#0165fe'}
+                                fontSize={13}
+                                fontFamily={'OpenSans-Bold'}>
+                                Terms & Conditions
+                            </Text>
                             {
                                 t('register_text_sign_in_up_information')
                                     .split('Terms & Conditions')[1]
                                     .split('Privacy Policy')[0]
                             }
-                            <Text style={[TextStyle.purple, TextStyle.small, TextStyle.bold]}>Privacy Policy</Text>
+                            <Text
+                                color={'#0165fe'}
+                                fontSize={13}
+                                fontFamily={'OpenSans-Bold'}>
+                                Privacy Policy
+                            </Text>
                             {
                                 t('register_text_sign_in_up_information').split(
                                     'Privacy Policy',
@@ -225,32 +278,10 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
     },
-    inner: {
-        flex: 1,
-        padding: 12,
-        width: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: 12,
-    },
-    textSpace: {
-        paddingBottom: 40,
-    },
     button: {
         backgroundColor: '#0165fe',
     },
     contentHidden: {
         opacity: 0.3,
     },
-    gaper: {
-        gap: 20,
-    },
-    textSize: {
-        fontSize: 28,
-    },
-    textError: {
-        textAlign: 'left',
-        width: '100%',
-        paddingHorizontal: 30
-    }
 });

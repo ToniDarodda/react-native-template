@@ -26,13 +26,17 @@ const Profile: React.FC<Props> = ({ navigation }) => {
     };
 
     return (
-        <VStack style={styles.container}>
+        <VStack flex={1}>
             <Navbar navigation={navigation} />
             <SafeAreaView style={styles.safeArea}>
-                <VStack style={styles.content}>
+                <VStack flex={1} padding={12}>
                     <Text>{t('OS')}</Text>
                     <Spacer />
-                    <Button text={'Logout'} onPress={handleLogout} containerStyle={styles.buttonLogout} />
+                    <Button
+                        text={'Logout'}
+                        onPress={handleLogout}
+                        containerStyle={styles.buttonLogout}
+                    />
                 </VStack>
             </SafeAreaView>
         </VStack>
@@ -42,22 +46,12 @@ const Profile: React.FC<Props> = ({ navigation }) => {
 export const ProfileScreen = React.memo(Profile);
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     safeArea: {
         flex: 1,
         width: '100%',
         marginBottom: 80,
     },
-    content: {
-        flex: 1,
-        padding: 12,
-    },
     buttonLogout: {
-        backgroundColor: 'red'
-    },
-    button: {
-        backgroundColor: '#0165fe',
+        backgroundColor: 'red',
     },
 });
